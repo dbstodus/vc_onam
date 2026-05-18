@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>바이브코딩 디자인 키워드 사전</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --bg: #f7f7f5;
+  --surface: #ffffff;
+  --border: #e8e8e4;
+  --text: #1a1a1a;
+  --text-sub: #666;
+  --text-muted: #999;
+  --accent: #1a1a1a;
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ── 헤더 ── */
+.site-header {
+  background: #1a1a1a;
+  color: #fff;
+  padding: 3rem 2rem 2.5rem;
+  text-align: center;
+}
+.site-header .tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #aaa;
+  border: 1px solid #444;
+  padding: 4px 12px;
+  border-radius: 99px;
+  margin-bottom: 1.2rem;
+}
+.site-header h1 {
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 0.8rem;
+}
+.site-header h1 span { color: #00c9a7; }
+.site-header p {
+  font-size: 15px;
+  color: #aaa;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ── 카테고리 탭 ── */
+.tab-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(247,247,245,0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  padding: 0 1.5rem;
+  scrollbar-width: none;
+}
+.tab-bar::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex-shrink: 0;
+  padding: 14px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Noto Sans KR', sans-serif;
+  white-space: nowrap;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active { color: var(--text); border-bottom-color: var(--text); }
+
+/* ── 메인 레이아웃 ── */
+.main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+
+.section { margin-bottom: 4rem; }
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1.5px solid var(--border);
+}
+.section-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.section-head h2 {
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+.section-head p {
+  font-size: 13px;
+  color: var(--text-sub);
+  margin-top: 2px;
+}
+
+/* ── 카드 그리드 ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.kw-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.kw-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+}
+
+/* SVG 미리보기 영역 */
+.preview-area {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: #f0f0ee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.preview-area svg { width: 100%; height: 100%; }
+
+/* 카드 하단 텍스트 */
+.kw-body { padding: 16px 18px 18px; }
+.kw-top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.kw-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.kw-name { font-weight: 700; font-size: 15px; }
+.kw-en { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; font-family: 'Space Mono', monospace; }
+.kw-desc { font-size: 13px; color: var(--text-sub); line-height: 1.6; margin-bottom: 12px; }
+.kw-points { list-style: none; font-size: 12.5px; color: var(--text-sub); margin-bottom: 14px; }
+.kw-points li { padding: 3px 0; }
+.kw-points li::before { content: '·  '; color: var(--text-muted); }
+
+.prompt-box {
+  background: #f4f4f2;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 12px;
+  color: #444;
+  line-height: 1.55;
+}
+.prompt-box strong {
+  display: block;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.prompt-box code {
+  font-family: 'Space Mono', monospace;
+  font-size: 11.5px;
+  color: #1a1a1a;
+}
+
+/* ── 조합표 ── */
+.combo-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.combo-table th {
+  background: #1a1a1a;
+  color: #fff;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+.combo-table td { padding: 13px 16px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.combo-table tr:last-child td { border-bottom: none; }
+.combo-table tr:hover td { background: #fafaf8; }
+.combo-table td:first-child { font-weight: 600; }
+.chips-wrap { display: flex; flex-wrap: wrap; gap: 5px; }
+.chip {
+  display: inline-block;
+  font-size: 11.5px;
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-weight: 500;
+}
+
+/* ── 푸터 ── */
+.site-footer {
+  background: #1a1a1a;
+  color: #666;
+  text-align: center;
+  padding: 2rem;
+  font-size: 13px;
+}
+.site-footer span { color: #00c9a7; }
+
+/* 섹션 숨김/표시 */
+.section.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="tag">바이브코딩 실습 자료 · Gemini AI 활용</div>
+  <h1>🎨 디자인 키워드 <span>사전</span></h1>
+  <p>AI에게 "이렇게 만들어줘!" 라고 말할 때 쓰는 단어 모음.<br>카드를 보고 마음에 드는 스타일을 골라봐요!</p>
+</header>
+
+<nav class="tab-bar" id="tabBar">
+  <button class="tab-btn active" onclick="showSection('all', this)">전체 보기</button>
+  <button class="tab-btn" onclick="showSection('mood', this)">🟣 분위기</button>
+  <button class="tab-btn" onclick="showSection('color', this)">🟢 색상</button>
+  <button class="tab-btn" onclick="showSection('layout', this)">🔴 레이아웃</button>
+  <button class="tab-btn" onclick="showSection('effect', this)">🟠 효과</button>
+  <button class="tab-btn" onclick="showSection('feel', this)">🟡 감성</button>
+</nav>
+
+<main class="main">
+
+<!-- ══════════════ 1. 분위기 & 스타일 ══════════════ -->
+<section class="section" id="sec-mood">
+  <div class="section-head">
+    <div class="section-icon" style="background:#eeedfe;">🟣</div>
+    <div>
+      <h2>분위기 & 스타일</h2>
+      <p>프로그램 전체의 "느낌"을 결정하는 키워드예요</p>
+    </div>
+  </div>
+  <div class="cards-grid">
+
+    <!-- 모던 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#ffffff"/>
+          <rect x="0" y="0" width="400" height="48" fill="#f8f8f8"/>
+          <rect x="20" y="16" width="60" height="16" rx="4" fill="#1a1a1a"/>
+          <circle cx="340" cy="24" r="14" fill="#1a1a1a"/>
+          <circle cx="370" cy="24" r="14" fill="#f0f0f0"/>
+          <rect x="20" y="68" width="170" height="10" rx="3" fill="#1a1a1a"/>
+          <rect x="20" y="86" width="120" height="8" rx="3" fill="#ddd"/>
+          <rect x="20" y="110" width="80" height="28" rx="6" fill="#1a1a1a"/>
+          <rect x="20" y="152" width="110" height="50" rx="10" fill="#f8f8f8" stroke="#eee" stroke-width="1"/>
+          <rect x="32" y="163" width="50" height="7" rx="2" fill="#bbb"/>
+          <rect x="32" y="176" width="70" height="6" rx="2" fill="#ddd"/>
+          <rect x="32" y="188" width="40" height="6" rx="2" fill="#ddd"/>
+          <rect x="145" y="152" width="110" height="50" rx="10" fill="#f8f8f8" stroke="#eee" stroke-width="1"/>
+          <rect x="157" y="163" width="50" height="7" rx="2" fill="#bbb"/>
+          <rect x="157" y="176" width="70" height="6" rx="2" fill="#ddd"/>
+          <rect x="157" y="188" width="40" height="6" rx="2" fill="#ddd"/>
+          <rect x="270" y="152" width="110" height="50" rx="10" fill="#f8f8f8" stroke="#eee" stroke-width="1"/>
+          <rect x="282" y="163" width="50" height="7" rx="2" fill="#bbb"/>
+          <rect x="282" y="176" width="70" height="6" rx="2" fill="#ddd"/>
+          <rect x="282" y="188" width="40" height="6" rx="2" fill="#ddd"/>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#7F77DD"></span><span class="kw-name">모던 / 미니멀</span></div>
+        <div class="kw-en">Modern / Minimal</div>
+        <div class="kw-desc">깔끔하고 현대적인 느낌. 꼭 필요한 것만 남긴 디자인.</div>
+        <ul class="kw-points">
+          <li>흰색·회색 위주의 무채색 팔레트</li>
+          <li>여백(공백)을 넓게 활용</li>
+          <li>Apple, 노션이 대표적인 예</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"모던하고 미니멀한 UI, 불필요한 요소 제거, 흰색 배경"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 귀여운 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#fff5f9"/>
+          <rect x="0" y="0" width="400" height="50" fill="#ffb3cc"/>
+          <text x="20" y="32" font-size="16" font-weight="bold" fill="white" font-family="sans-serif">🌸 MyApp</text>
+          <rect x="320" y="12" width="60" height="26" rx="13" fill="white" opacity="0.6"/>
+          <text x="338" y="30" font-size="12" fill="#ff6b9d" font-family="sans-serif">메뉴</text>
+          <rect x="20" y="68" width="170" height="90" rx="20" fill="white" stroke="#ffd6e8" stroke-width="2"/>
+          <text x="38" y="96" font-size="22">🎀</text>
+          <rect x="60" y="82" width="80" height="8" rx="4" fill="#ffb3cc"/>
+          <rect x="60" y="96" width="100" height="6" rx="3" fill="#ffd6e8"/>
+          <rect x="38" y="112" width="110" height="26" rx="13" fill="#ff6b9d"/>
+          <text x="62" y="130" font-size="11" fill="white" font-family="sans-serif">시작하기 ✨</text>
+          <rect x="210" y="68" width="170" height="90" rx="20" fill="white" stroke="#ffd6e8" stroke-width="2"/>
+          <text x="228" y="96" font-size="22">🌈</text>
+          <rect x="258" y="82" width="80" height="8" rx="4" fill="#ffb3cc"/>
+          <rect x="258" y="96" width="100" height="6" rx="3" fill="#ffd6e8"/>
+          <rect x="228" y="112" width="110" height="26" rx="13" fill="#ff6b9d"/>
+          <text x="252" y="130" font-size="11" fill="white" font-family="sans-serif">시작하기 ✨</text>
+          <rect x="20" y="170" width="360" height="40" rx="20" fill="#fff0f5" stroke="#ffd6e8" stroke-width="1.5"/>
+          <text x="40" y="195" font-size="13" fill="#ff6b9d" font-family="sans-serif">💬 무엇이든 물어봐요~</text>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#FF6B9D"></span><span class="kw-name">귀여운</span></div>
+        <div class="kw-en">Cute / Kawaii</div>
+        <div class="kw-desc">동글동글하고 밝은 색감. 아기자기한 느낌의 디자인.</div>
+        <ul class="kw-points">
+          <li>모서리가 둥근 버튼과 카드 (border-radius 크게)</li>
+          <li>파스텔 핑크·민트·라벤더 색상</li>
+          <li>이모지와 아이콘을 적극 활용</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"귀엽고 아기자기한 스타일, 둥근 버튼, 파스텔 핑크 색상"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 레트로 Y2K -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#0a0a2e"/>
+          <rect x="0" y="0" width="400" height="36" fill="#1a0066"/>
+          <rect x="8" y="10" width="12" height="12" rx="0" fill="#ff0066"/>
+          <rect x="26" y="10" width="12" height="12" rx="0" fill="#ffff00"/>
+          <rect x="44" y="10" width="12" height="12" rx="0" fill="#00ff88"/>
+          <text x="80" y="22" font-size="11" fill="#00ffff" font-family="monospace">✦ WELCOME TO MY PAGE ✦ BEST VIEWED 800x600 ✦</text>
+          <rect x="20" y="48" width="360" height="70" rx="0" fill="#0d0d3d" stroke="#ff00ff" stroke-width="2"/>
+          <text x="30" y="72" font-size="18" font-weight="bold" fill="#ff00ff" font-family="monospace">☆ MY COOL SITE ☆</text>
+          <text x="30" y="92" font-size="11" fill="#00ffff" font-family="monospace">~ under construction ~</text>
+          <rect x="30" y="100" width="80" height="10" rx="0" fill="#ff0066"/>
+          <rect x="116" y="100" width="80" height="10" rx="0" fill="#ffff00"/>
+          <rect x="202" y="100" width="80" height="10" rx="0" fill="#00ff88"/>
+          <rect x="20" y="132" width="110" height="80" rx="0" fill="#0d0d3d" stroke="#ffff00" stroke-width="1.5"/>
+          <text x="30" y="152" font-size="10" fill="#ffff00" font-family="monospace">★ LINKS ★</text>
+          <text x="30" y="168" font-size="9" fill="#00ffff" font-family="monospace">» MyProfile</text>
+          <text x="30" y="182" font-size="9" fill="#00ffff" font-family="monospace">» GuestBook</text>
+          <text x="30" y="196" font-size="9" fill="#00ffff" font-family="monospace">» Gallery</text>
+          <rect x="142" y="132" width="238" height="80" rx="0" fill="#0d0d3d" stroke="#00ff88" stroke-width="1.5"/>
+          <text x="152" y="152" font-size="9" fill="#00ff88" font-family="monospace">LATEST NEWS !!!!</text>
+          <text x="152" y="168" font-size="8" fill="#ccc" font-family="monospace">2004.03.15 - Updated my page!</text>
+          <text x="152" y="180" font-size="8" fill="#ccc" font-family="monospace">2004.03.10 - New photos added</text>
+          <text x="152" y="192" font-size="8" fill="#ccc" font-family="monospace">2004.02.28 - Hello World!!</text>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#FF6B9D"></span><span class="kw-name">레트로 / Y2K</span></div>
+        <div class="kw-en">Retro / Y2K</div>
+        <div class="kw-desc">80~2000년대 인터넷 느낌. 반짝이고 알록달록한 스타일.</div>
+        <ul class="kw-points">
+          <li>네온 원색 (형광 핑크·노랑·하늘)</li>
+          <li>픽셀·모노스페이스 폰트</li>
+          <li>두꺼운 테두리, 별·하트 장식</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"Y2K 감성, 2000년대 초반 인터넷 홈페이지 느낌"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 미래적·사이버펑크 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#020b1a"/>
+          <line x1="0" y1="30" x2="400" y2="30" stroke="#0ff" stroke-width="0.3" opacity="0.3"/>
+          <line x1="0" y1="60" x2="400" y2="60" stroke="#0ff" stroke-width="0.3" opacity="0.3"/>
+          <line x1="0" y1="90" x2="400" y2="90" stroke="#0ff" stroke-width="0.3" opacity="0.3"/>
+          <line x1="0" y1="120" x2="400" y2="120" stroke="#0ff" stroke-width="0.3" opacity="0.3"/>
+          <line x1="0" y1="150" x2="400" y2="150" stroke="#0ff" stroke-width="0.3" opacity="0.3"/>
+          <line x1="0" y1="180" x2="400" y2="180" stroke="#0ff" stroke-width="0.3" opacity="0.3"/>
+          <line x1="0" y1="210" x2="400" y2="210" stroke="#0ff" stroke-width="0.3" opacity="0.3"/>
+          <polygon points="20,20 380,20 390,10 390,50 380,60 20,60 10,50 10,10" fill="none" stroke="#00ffff" stroke-width="1.5"/>
+          <text x="30" y="44" font-size="16" font-weight="bold" fill="#00ffff" font-family="monospace">SYS::CORE v2.4</text>
+          <rect x="340" y="28" width="35" height="16" rx="0" fill="#ff0066" opacity="0.9"/>
+          <text x="344" y="40" font-size="9" fill="white" font-family="monospace">LIVE</text>
+          <rect x="20" y="76" width="170" height="60" rx="0" fill="none" stroke="#00ffff" stroke-width="1"/>
+          <rect x="20" y="76" width="170" height="3" fill="#00ffff" opacity="0.5"/>
+          <text x="30" y="96" font-size="9" fill="#00ffff" font-family="monospace">NEURAL ACTIVITY</text>
+          <rect x="30" y="104" width="120" height="8" rx="0" fill="#001a1a"/>
+          <rect x="30" y="104" width="90" height="8" rx="0" fill="#00ffff" opacity="0.8"/>
+          <text x="30" y="128" font-size="9" fill="#aaa" font-family="monospace">PWR: 78.3%</text>
+          <rect x="210" y="76" width="170" height="60" rx="0" fill="none" stroke="#ff0066" stroke-width="1"/>
+          <rect x="210" y="76" width="170" height="3" fill="#ff0066" opacity="0.5"/>
+          <text x="220" y="96" font-size="9" fill="#ff0066" font-family="monospace">THREAT MATRIX</text>
+          <text x="220" y="112" font-size="8" fill="#ff6688" font-family="monospace">▲ ANOMALY: SECTOR 7</text>
+          <text x="220" y="126" font-size="8" fill="#888" font-family="monospace">STATUS: MONITORING</text>
+          <rect x="20" y="152" width="360" height="58" rx="0" fill="none" stroke="#00ffff" stroke-width="1"/>
+          <text x="30" y="172" font-size="9" fill="#00ffff" font-family="monospace">TERMINAL &gt; _</text>
+          <text x="30" y="188" font-size="8" fill="#0a8" font-family="monospace">$ system.analyze --deep --verbose</text>
+          <text x="30" y="202" font-size="8" fill="#00ffff" font-family="monospace">Processing... [████████░░] 82%</text>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#378ADD"></span><span class="kw-name">미래적 / 사이버펑크</span></div>
+        <div class="kw-en">Futuristic / Cyberpunk</div>
+        <div class="kw-desc">SF처럼 첨단 기술 느낌. 네온·홀로그램·해킹 분위기.</div>
+        <ul class="kw-points">
+          <li>어두운 배경 + 형광 청록·분홍 텍스트</li>
+          <li>모노스페이스(코드) 폰트</li>
+          <li>격자 패턴, HUD 인터페이스 스타일</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"사이버펑크 스타일, 어두운 배경에 네온 청록색 텍스트"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 유리 느낌 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#667eea;stop-opacity:1"/>
+              <stop offset="50%" style="stop-color:#764ba2;stop-opacity:1"/>
+              <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1"/>
+            </linearGradient>
+            <filter id="blur1"><feGaussianBlur stdDeviation="4"/></filter>
+          </defs>
+          <rect width="400" height="225" fill="url(#gGlass)"/>
+          <circle cx="80" cy="60" r="50" fill="#f093fb" opacity="0.4" filter="url(#blur1)"/>
+          <circle cx="320" cy="160" r="60" fill="#667eea" opacity="0.4" filter="url(#blur1)"/>
+          <circle cx="200" cy="110" r="70" fill="#4facfe" opacity="0.3" filter="url(#blur1)"/>
+          <!-- 유리 카드 1 -->
+          <rect x="30" y="40" width="155" height="145" rx="16" fill="white" fill-opacity="0.15" stroke="white" stroke-opacity="0.3" stroke-width="1"/>
+          <rect x="30" y="40" width="155" height="145" rx="16" fill="none" stroke="white" stroke-opacity="0.5" stroke-width="0.5"/>
+          <circle cx="75" cy="80" r="20" fill="white" fill-opacity="0.2"/>
+          <text x="67" y="87" font-size="16">🌙</text>
+          <rect x="48" y="108" width="100" height="8" rx="4" fill="white" fill-opacity="0.5"/>
+          <rect x="48" y="122" width="75" height="6" rx="3" fill="white" fill-opacity="0.3"/>
+          <rect x="48" y="148" width="99" height="24" rx="12" fill="white" fill-opacity="0.25" stroke="white" stroke-opacity="0.4" stroke-width="1"/>
+          <text x="70" y="164" font-size="10" fill="white" font-family="sans-serif" font-weight="600">시작하기</text>
+          <!-- 유리 카드 2 -->
+          <rect x="215" y="40" width="155" height="145" rx="16" fill="white" fill-opacity="0.15" stroke="white" stroke-opacity="0.3" stroke-width="1"/>
+          <circle cx="260" cy="80" r="20" fill="white" fill-opacity="0.2"/>
+          <text x="252" y="87" font-size="16">⭐</text>
+          <rect x="233" y="108" width="100" height="8" rx="4" fill="white" fill-opacity="0.5"/>
+          <rect x="233" y="122" width="75" height="6" rx="3" fill="white" fill-opacity="0.3"/>
+          <rect x="233" y="148" width="99" height="24" rx="12" fill="white" fill-opacity="0.25" stroke="white" stroke-opacity="0.4" stroke-width="1"/>
+          <text x="255" y="164" font-size="10" fill="white" font-family="sans-serif" font-weight="600">탐색하기</text>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#7F77DD"></span><span class="kw-name">유리 느낌</span></div>
+        <div class="kw-en">Glassmorphism</div>
+        <div class="kw-desc">반투명 유리처럼 흐릿하고 투명한 레이어 효과.</div>
+        <ul class="kw-points">
+          <li>배경이 살짝 비치는 카드 (backdrop-filter: blur)</li>
+          <li>그라데이션 배경 위에 올려야 효과적</li>
+          <li>아이폰 잠금화면 같은 느낌</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"glassmorphism, 반투명 유리 카드, 그라데이션 배경"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 입체적 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#e8e8e8"/>
+          <rect x="40" y="30" width="320" height="165" rx="24" fill="#e8e8e8" style="filter:drop-shadow(8px 8px 16px #b0b0b0) drop-shadow(-4px -4px 10px #ffffff)"/>
+          <rect x="60" y="50" width="130" height="130" rx="18" fill="#e8e8e8" style="filter:drop-shadow(6px 6px 12px #b8b8b8) drop-shadow(-3px -3px 8px #fefefe)"/>
+          <text x="95" y="122" font-size="36">🎵</text>
+          <rect x="205" y="52" width="140" height="16" rx="8" fill="#e8e8e8" style="filter:drop-shadow(3px 3px 6px #b8b8b8) drop-shadow(-2px -2px 5px #fefefe)"/>
+          <rect x="205" y="78" width="110" height="10" rx="5" fill="#e8e8e8" style="filter:drop-shadow(3px 3px 6px #b8b8b8) drop-shadow(-2px -2px 5px #fefefe)"/>
+          <rect x="205" y="98" width="125" height="6" rx="3" fill="#e8e8e8" style="filter:drop-shadow(2px 2px 4px #b8b8b8) drop-shadow(-1px -1px 3px #fefefe)"/>
+          <rect x="205" y="120" width="140" height="8" rx="4" fill="#d0d0d0"/>
+          <rect x="205" y="120" width="80" height="8" rx="4" fill="#666"/>
+          <rect x="205" y="148" width="44" height="28" rx="14" fill="#e8e8e8" style="filter:drop-shadow(4px 4px 8px #b0b0b0) drop-shadow(-2px -2px 6px #fff)"/>
+          <text x="220" y="167" font-size="14">⏮</text>
+          <rect x="257" y="142" width="40" height="40" rx="20" fill="#555" style="filter:drop-shadow(4px 4px 10px #888) drop-shadow(-2px -2px 6px #ccc)"/>
+          <text x="270" y="167" font-size="16" fill="white">▶</text>
+          <rect x="305" y="148" width="44" height="28" rx="14" fill="#e8e8e8" style="filter:drop-shadow(4px 4px 8px #b0b0b0) drop-shadow(-2px -2px 6px #fff)"/>
+          <text x="319" y="167" font-size="14">⏭</text>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#7F77DD"></span><span class="kw-name">입체적인</span></div>
+        <div class="kw-en">Neumorphism / 3D</div>
+        <div class="kw-desc">실제 물건처럼 두께감과 그림자가 있는 디자인.</div>
+        <ul class="kw-points">
+          <li>밝고 어두운 그림자를 양쪽에 사용</li>
+          <li>배경과 같은 색 계열의 카드</li>
+          <li>버튼을 누르면 쏙 들어가는 느낌</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"neumorphism 스타일, 입체적인 버튼, 눌리는 효과"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 자연스러운 코지 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#faf6f0"/>
+          <rect x="0" y="0" width="400" height="52" fill="#f0e8d8"/>
+          <text x="24" y="32" font-size="15" font-weight="bold" fill="#5c4a32" font-family="serif">🌿 Daily Journal</text>
+          <rect x="20" y="68" width="360" height="50" rx="14" fill="white" stroke="#e8dcc8" stroke-width="1.5"/>
+          <text x="38" y="92" font-size="13" fill="#8c7a62" font-family="serif">오늘 하루는 어땠나요? ☁️</text>
+          <rect x="20" y="128" width="110" height="82" rx="14" fill="white" stroke="#e8dcc8" stroke-width="1.5"/>
+          <text x="38" y="155" font-size="18">🍵</text>
+          <rect x="62" y="144" width="50" height="7" rx="3" fill="#c9b99a"/>
+          <rect x="38" y="158" width="72" height="6" rx="3" fill="#ddd0bc"/>
+          <rect x="38" y="170" width="80" height="26" rx="13" fill="#c9b99a"/>
+          <text x="52" y="187" font-size="10" fill="white" font-family="sans-serif">기록하기</text>
+          <rect x="142" y="128" width="110" height="82" rx="14" fill="white" stroke="#e8dcc8" stroke-width="1.5"/>
+          <text x="160" y="155" font-size="18">🌸</text>
+          <rect x="184" y="144" width="50" height="7" rx="3" fill="#c9b99a"/>
+          <rect x="160" y="158" width="72" height="6" rx="3" fill="#ddd0bc"/>
+          <rect x="160" y="170" width="80" height="26" rx="13" fill="#c9b99a"/>
+          <text x="172" y="187" font-size="10" fill="white" font-family="sans-serif">감정 기록</text>
+          <rect x="264" y="128" width="116" height="82" rx="14" fill="white" stroke="#e8dcc8" stroke-width="1.5"/>
+          <text x="282" y="155" font-size="18">📖</text>
+          <rect x="306" y="144" width="50" height="7" rx="3" fill="#c9b99a"/>
+          <rect x="282" y="158" width="72" height="6" rx="3" fill="#ddd0bc"/>
+          <rect x="282" y="170" width="80" height="26" rx="13" fill="#c9b99a"/>
+          <text x="296" y="187" font-size="10" fill="white" font-family="sans-serif">독서 기록</text>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#BA7517"></span><span class="kw-name">자연스러운 / 코지</span></div>
+        <div class="kw-en">Natural / Cozy</div>
+        <div class="kw-desc">자연에서 온 것 같은 따뜻하고 편안한 느낌.</div>
+        <ul class="kw-points">
+          <li>베이지·크림·갈색 계열 색상</li>
+          <li>세리프(명조) 폰트로 따뜻한 느낌</li>
+          <li>카페, 일기장, 독서 앱에 잘 어울림</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"코지하고 따뜻한 느낌, 베이지 색상, 카페 분위기"</code>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ 2. 색상 ══════════════ -->
+<section class="section" id="sec-color">
+  <div class="section-head">
+    <div class="section-icon" style="background:#e1f5ee;">🟢</div>
+    <div>
+      <h2>색상 & 테마</h2>
+      <p>어떤 색을 쓸지 결정하는 키워드예요</p>
+    </div>
+  </div>
+  <div class="cards-grid">
+
+    <!-- 다크모드 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#0f0f0f"/>
+          <rect x="0" y="0" width="400" height="46" fill="#1a1a1a"/>
+          <rect x="18" y="14" width="48" height="18" rx="4" fill="#333"/>
+          <circle cx="340" cy="23" r="12" fill="#333"/>
+          <circle cx="368" cy="23" r="12" fill="#444"/>
+          <rect x="18" y="62" width="200" height="12" rx="3" fill="#e8e8e8"/>
+          <rect x="18" y="82" width="140" height="8" rx="3" fill="#555"/>
+          <rect x="18" y="106" width="90" height="30" rx="8" fill="#ffffff"/>
+          <rect x="116" y="106" width="90" height="30" rx="8" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+          <text x="30" y="126" font-size="12" fill="#000" font-family="sans-serif" font-weight="600">시작하기</text>
+          <text x="128" y="126" font-size="12" fill="#aaa" font-family="sans-serif">더 보기</text>
+          <rect x="18" y="152" width="115" height="58" rx="10" fill="#1e1e1e" stroke="#2a2a2a" stroke-width="1"/>
+          <rect x="30" y="163" width="50" height="7" rx="2" fill="#555"/>
+          <rect x="30" y="177" width="75" height="5" rx="2" fill="#3a3a3a"/>
+          <rect x="30" y="188" width="60" height="5" rx="2" fill="#3a3a3a"/>
+          <rect x="148" y="152" width="115" height="58" rx="10" fill="#1e1e1e" stroke="#2a2a2a" stroke-width="1"/>
+          <rect x="160" y="163" width="50" height="7" rx="2" fill="#555"/>
+          <rect x="160" y="177" width="75" height="5" rx="2" fill="#3a3a3a"/>
+          <rect x="160" y="188" width="60" height="5" rx="2" fill="#3a3a3a"/>
+          <rect x="278" y="152" width="104" height="58" rx="10" fill="#1e1e1e" stroke="#2a2a2a" stroke-width="1"/>
+          <rect x="290" y="163" width="50" height="7" rx="2" fill="#555"/>
+          <rect x="290" y="177" width="75" height="5" rx="2" fill="#3a3a3a"/>
+          <rect x="290" y="188" width="60" height="5" rx="2" fill="#3a3a3a"/>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#1D9E75"></span><span class="kw-name">다크 모드</span></div>
+        <div class="kw-en">Dark Mode</div>
+        <div class="kw-desc">배경이 어둡고 글자가 밝은 테마. 눈이 편하고 세련됨.</div>
+        <ul class="kw-points">
+          <li>밤에 봐도 눈이 덜 피로함</li>
+          <li>개발자·게임 앱이 많이 사용</li>
+          <li>네온 색상과 조합하면 멋짐</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"다크 모드, 검정 배경에 흰 텍스트, 어두운 카드"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 파스텔 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#fef9ff"/>
+          <rect x="0" y="0" width="400" height="46" fill="#f0e6ff"/>
+          <rect x="18" y="14" width="80" height="18" rx="9" fill="#e0c8ff"/>
+          <rect x="280" y="14" width="100" height="18" rx="9" fill="#c8e8ff"/>
+          <rect x="18" y="60" width="155" height="75" rx="16" fill="#ffe0f0"/>
+          <text x="36" y="90" font-size="24">🌸</text>
+          <rect x="68" y="78" width="80" height="7" rx="3" fill="#f0b8d0"/>
+          <rect x="68" y="92" width="60" height="5" rx="2" fill="#f8d0e4"/>
+          <rect x="36" y="110" width="115" height="16" rx="8" fill="#ffb3d1"/>
+          <rect x="190" y="60" width="92" height="75" rx="16" fill="#e0f0ff"/>
+          <text x="210" y="90" font-size="22">💙</text>
+          <rect x="240" y="82" width="32" height="7" rx="3" fill="#b3d4f0"/>
+          <rect x="210" y="114" width="60" height="16" rx="8" fill="#90c8f0"/>
+          <rect x="298" y="60" width="84" height="75" rx="16" fill="#e8ffe0"/>
+          <text x="318" y="90" font-size="22">🍀</text>
+          <rect x="318" y="114" width="52" height="16" rx="8" fill="#90d880"/>
+          <rect x="18" y="150" width="364" height="58" rx="16" fill="#fff8e0"/>
+          <text x="32" y="175" font-size="22">⭐</text>
+          <rect x="62" y="162" width="200" height="8" rx="4" fill="#f0d880"/>
+          <rect x="62" y="177" width="150" height="6" rx="3" fill="#f8e8b0"/>
+          <rect x="310" y="162" width="55" height="30" rx="15" fill="#f0d060"/>
+          <text x="320" y="181" font-size="11" fill="white" font-family="sans-serif">확인</text>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#1D9E75"></span><span class="kw-name">파스텔 톤</span></div>
+        <div class="kw-en">Pastel</div>
+        <div class="kw-desc">연하고 부드러운 색감. 보기에 포근하고 따뜻한 느낌.</div>
+        <ul class="kw-points">
+          <li>분홍·민트·라벤더·베이지 등 연한 색</li>
+          <li>눈에 자극이 적고 부드러움</li>
+          <li>다이어리·스터디·건강 앱에 적합</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"파스텔 색상, 연한 핑크와 민트와 라벤더 조합"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 그라데이션 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#f093fb"/>
+              <stop offset="100%" style="stop-color:#f5576c"/>
+            </linearGradient>
+            <linearGradient id="gGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#4facfe"/>
+              <stop offset="100%" style="stop-color:#00f2fe"/>
+            </linearGradient>
+            <linearGradient id="gGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#43e97b"/>
+              <stop offset="100%" style="stop-color:#38f9d7"/>
+            </linearGradient>
+            <linearGradient id="gGradBg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#667eea"/>
+              <stop offset="100%" style="stop-color:#764ba2"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="225" fill="url(#gGradBg)"/>
+          <rect x="18" y="18" width="364" height="46" rx="12" fill="white" fill-opacity="0.15"/>
+          <rect x="30" y="30" width="80" height="22" rx="11" fill="white" fill-opacity="0.3"/>
+          <text x="46" y="45" font-size="12" fill="white" font-family="sans-serif">홈</text>
+          <rect x="120" y="30" width="80" height="22" rx="11" fill="white" fill-opacity="0.15"/>
+          <rect x="18" y="80" width="175" height="130" rx="16" fill="url(#gGrad1)" fill-opacity="0.9"/>
+          <text x="38" y="120" font-size="28" fill="white">🔥</text>
+          <rect x="38" y="135" width="110" height="9" rx="4" fill="white" fill-opacity="0.8"/>
+          <rect x="38" y="152" width="80" height="7" rx="3" fill="white" fill-opacity="0.5"/>
+          <rect x="38" y="170" width="110" height="26" rx="13" fill="white" fill-opacity="0.25"/>
+          <text x="65" y="187" font-size="11" fill="white" font-family="sans-serif">자세히 보기</text>
+          <rect x="210" y="80" width="92" height="60" rx="14" fill="url(#gGrad2)" fill-opacity="0.9"/>
+          <text x="228" y="116" font-size="24">💧</text>
+          <rect x="210" y="150" width="92" height="60" rx="14" fill="url(#gGrad3)" fill-opacity="0.9"/>
+          <text x="228" y="186" font-size="24">🌿</text>
+          <rect x="318" y="80" width="64" height="130" rx="14" fill="white" fill-opacity="0.2"/>
+          <rect x="330" y="92" width="40" height="7" rx="3" fill="white" fill-opacity="0.6"/>
+          <rect x="330" y="106" width="28" height="7" rx="3" fill="white" fill-opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#1D9E75"></span><span class="kw-name">그라데이션</span></div>
+        <div class="kw-en">Gradient</div>
+        <div class="kw-desc">두 가지 이상의 색이 자연스럽게 섞이는 효과.</div>
+        <ul class="kw-points">
+          <li>인스타그램 로고처럼 색이 자연스럽게 변함</li>
+          <li>버튼·배경·카드에 활용</li>
+          <li>생동감 있고 시각적으로 풍부함</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"보라→파랑→분홍 그라데이션 배경, 카드에도 그라데이션"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 네온 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#050505"/>
+          <text x="30" y="56" font-size="26" font-weight="bold" fill="#39ff14" font-family="monospace" style="text-shadow:0 0 10px #39ff14">NEON</text>
+          <text x="130" y="56" font-size="26" font-weight="bold" fill="#ff073a" font-family="monospace" style="text-shadow:0 0 10px #ff073a">CITY</text>
+          <text x="220" y="56" font-size="26" font-weight="bold" fill="#00b4ff" font-family="monospace" style="text-shadow:0 0 10px #00b4ff">APP</text>
+          <line x1="20" y1="70" x2="380" y2="70" stroke="#39ff14" stroke-width="1" opacity="0.5"/>
+          <rect x="20" y="84" width="110" height="60" rx="8" fill="#0a0a0a" stroke="#39ff14" stroke-width="1.5"/>
+          <text x="38" y="116" font-size="22">🎮</text>
+          <rect x="65" y="104" width="48" height="6" rx="3" fill="#39ff14" opacity="0.7"/>
+          <rect x="65" y="116" width="35" height="4" rx="2" fill="#39ff14" opacity="0.3"/>
+          <rect x="143" y="84" width="110" height="60" rx="8" fill="#0a0a0a" stroke="#ff073a" stroke-width="1.5"/>
+          <text x="161" y="116" font-size="22">🏆</text>
+          <rect x="188" y="104" width="48" height="6" rx="3" fill="#ff073a" opacity="0.7"/>
+          <rect x="188" y="116" width="35" height="4" rx="2" fill="#ff073a" opacity="0.3"/>
+          <rect x="266" y="84" width="114" height="60" rx="8" fill="#0a0a0a" stroke="#00b4ff" stroke-width="1.5"/>
+          <text x="284" y="116" font-size="22">⚡</text>
+          <rect x="311" y="104" width="48" height="6" rx="3" fill="#00b4ff" opacity="0.7"/>
+          <rect x="311" y="116" width="35" height="4" rx="2" fill="#00b4ff" opacity="0.3"/>
+          <rect x="20" y="160" width="360" height="48" rx="10" fill="#0a0a0a" stroke="#ff00ff" stroke-width="1.5"/>
+          <text x="38" y="180" font-size="10" fill="#ff00ff" font-family="monospace" opacity="0.8">LEVEL 42 · XP: 8,420 / 10,000</text>
+          <rect x="38" y="188" width="300" height="6" rx="3" fill="#1a001a"/>
+          <rect x="38" y="188" width="210" height="6" rx="3" fill="#ff00ff" opacity="0.8"/>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#1D9E75"></span><span class="kw-name">네온 색상</span></div>
+        <div class="kw-en">Neon</div>
+        <div class="kw-desc">형광빛의 강렬한 색. 게임·파티·클럽 분위기.</div>
+        <ul class="kw-points">
+          <li>어두운 배경일 때 더 빛남</li>
+          <li>형광 초록·분홍·파랑·보라 사용</li>
+          <li>에너지 넘치는 에너지 표현에 최적</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"검정 배경에 네온 초록·분홍·파랑 컬러 사용"</code>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ 3. 레이아웃 ══════════════ -->
+<section class="section" id="sec-layout">
+  <div class="section-head">
+    <div class="section-icon" style="background:#faece7;">🔴</div>
+    <div>
+      <h2>레이아웃 & 구조</h2>
+      <p>화면을 어떻게 배치할지 결정하는 키워드예요</p>
+    </div>
+  </div>
+  <div class="cards-grid">
+
+    <!-- 대시보드 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#f8fafc"/>
+          <rect x="0" y="0" width="70" height="225" fill="#1e293b"/>
+          <circle cx="35" cy="28" r="16" fill="#3b82f6"/>
+          <text x="26" y="33" font-size="12" fill="white" font-family="sans-serif">DB</text>
+          <rect x="12" y="58" width="46" height="30" rx="8" fill="#334155"/>
+          <rect x="12" y="96" width="46" height="30" rx="8" fill="#3b82f6"/>
+          <rect x="12" y="134" width="46" height="30" rx="8" fill="#334155"/>
+          <rect x="12" y="172" width="46" height="30" rx="8" fill="#334155"/>
+          <text x="26" y="78" font-size="16">🏠</text>
+          <text x="26" y="116" font-size="16">📊</text>
+          <text x="26" y="154" font-size="16">👤</text>
+          <text x="26" y="192" font-size="16">⚙️</text>
+          <rect x="78" y="8" width="314" height="36" rx="0" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+          <rect x="88" y="16" width="120" height="20" rx="5" fill="#f1f5f9"/>
+          <circle cx="370" cy="26" r="10" fill="#e2e8f0"/>
+          <rect x="78" y="52" width="95" height="55" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+          <rect x="88" y="60" width="40" height="7" rx="3" fill="#94a3b8"/>
+          <text x="88" y="93" font-size="18" font-weight="bold" fill="#1e293b" font-family="sans-serif">1,280</text>
+          <rect x="181" y="52" width="95" height="55" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+          <rect x="191" y="60" width="40" height="7" rx="3" fill="#94a3b8"/>
+          <text x="191" y="93" font-size="18" font-weight="bold" fill="#22c55e" font-family="sans-serif">+42%</text>
+          <rect x="284" y="52" width="108" height="55" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+          <rect x="294" y="60" width="40" height="7" rx="3" fill="#94a3b8"/>
+          <text x="294" y="93" font-size="18" font-weight="bold" fill="#3b82f6" font-family="sans-serif">98점</text>
+          <rect x="78" y="115" width="200" height="102" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+          <rect x="88" y="124" width="60" height="7" rx="3" fill="#94a3b8"/>
+          <rect x="88" y="140" width="15" height="60" rx="3" fill="#3b82f6"/>
+          <rect x="110" y="155" width="15" height="45" rx="3" fill="#3b82f6"/>
+          <rect x="132" y="148" width="15" height="52" rx="3" fill="#3b82f6"/>
+          <rect x="154" y="135" width="15" height="65" rx="3" fill="#3b82f6"/>
+          <rect x="176" y="150" width="15" height="50" rx="3" fill="#93c5fd"/>
+          <rect x="198" y="143" width="15" height="57" rx="3" fill="#93c5fd"/>
+          <rect x="220" y="138" width="15" height="62" rx="3" fill="#3b82f6"/>
+          <rect x="286" y="115" width="106" height="102" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+          <rect x="296" y="124" width="60" height="7" rx="3" fill="#94a3b8"/>
+          <circle cx="339" cy="170" r="30" fill="none" stroke="#e2e8f0" stroke-width="8"/>
+          <circle cx="339" cy="170" r="30" fill="none" stroke="#3b82f6" stroke-width="8" stroke-dasharray="120 188" stroke-dashoffset="47" stroke-linecap="round"/>
+          <text x="327" y="175" font-size="12" font-weight="bold" fill="#1e293b" font-family="sans-serif">64%</text>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#D85A30"></span><span class="kw-name">대시보드형</span></div>
+        <div class="kw-en">Dashboard</div>
+        <div class="kw-desc">여러 정보와 차트를 한 화면에 모아 보여주는 구조.</div>
+        <ul class="kw-points">
+          <li>숫자·그래프·통계를 한눈에</li>
+          <li>왼쪽 사이드바 + 오른쪽 콘텐츠 구조</li>
+          <li>공부 현황, 용돈 관리 앱에 적합</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"대시보드 형식, 왼쪽 사이드바 + 통계 카드 + 차트"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 카드형 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#f1f5f9"/>
+          <rect x="0" y="0" width="400" height="42" fill="white" stroke="#e2e8f0" stroke-width="0" style="filter:drop-shadow(0 1px 3px rgba(0,0,0,0.1))"/>
+          <rect x="16" y="13" width="50" height="16" rx="4" fill="#1e293b"/>
+          <rect x="240" y="12" width="60" height="18" rx="9" fill="#f1f5f9"/>
+          <rect x="316" y="12" width="68" height="18" rx="9" fill="#3b82f6"/>
+          <text x="329" y="25" font-size="10" fill="white" font-family="sans-serif">+ 추가</text>
+          <rect x="16" y="54" width="112" height="78" rx="14" fill="white" style="filter:drop-shadow(0 2px 8px rgba(0,0,0,0.08))"/>
+          <rect x="16" y="54" width="112" height="32" rx="14" fill="#fef9c3"/>
+          <rect x="16" y="70" width="112" height="16" fill="#fef9c3"/>
+          <text x="52" y="75" font-size="16">📚</text>
+          <rect x="26" y="92" width="60" height="7" rx="3" fill="#1e293b"/>
+          <rect x="26" y="105" width="85" height="5" rx="2" fill="#94a3b8"/>
+          <rect x="26" y="118" width="50" height="10" rx="5" fill="#fef08a"/>
+          <rect x="144" y="54" width="112" height="78" rx="14" fill="white" style="filter:drop-shadow(0 2px 8px rgba(0,0,0,0.08))"/>
+          <rect x="144" y="54" width="112" height="32" rx="14" fill="#dcfce7"/>
+          <rect x="144" y="70" width="112" height="16" fill="#dcfce7"/>
+          <text x="180" y="75" font-size="16">🏃</text>
+          <rect x="154" y="92" width="60" height="7" rx="3" fill="#1e293b"/>
+          <rect x="154" y="105" width="85" height="5" rx="2" fill="#94a3b8"/>
+          <rect x="154" y="118" width="50" height="10" rx="5" fill="#86efac"/>
+          <rect x="272" y="54" width="112" height="78" rx="14" fill="white" style="filter:drop-shadow(0 2px 8px rgba(0,0,0,0.08))"/>
+          <rect x="272" y="54" width="112" height="32" rx="14" fill="#ede9fe"/>
+          <rect x="272" y="70" width="112" height="16" fill="#ede9fe"/>
+          <text x="308" y="75" font-size="16">🎵</text>
+          <rect x="282" y="92" width="60" height="7" rx="3" fill="#1e293b"/>
+          <rect x="282" y="105" width="85" height="5" rx="2" fill="#94a3b8"/>
+          <rect x="282" y="118" width="50" height="10" rx="5" fill="#c4b5fd"/>
+          <rect x="16" y="144" width="112" height="68" rx="14" fill="white" style="filter:drop-shadow(0 2px 8px rgba(0,0,0,0.08))"/>
+          <rect x="16" y="144" width="112" height="28" rx="14" fill="#fee2e2"/>
+          <rect x="16" y="158" width="112" height="14" fill="#fee2e2"/>
+          <text x="52" y="164" font-size="14">🍎</text>
+          <rect x="26" y="180" width="60" height="7" rx="3" fill="#1e293b"/>
+          <rect x="26" y="193" width="85" height="5" rx="2" fill="#94a3b8"/>
+          <rect x="144" y="144" width="112" height="68" rx="14" fill="white" style="filter:drop-shadow(0 2px 8px rgba(0,0,0,0.08))"/>
+          <rect x="144" y="144" width="112" height="28" rx="14" fill="#e0f2fe"/>
+          <rect x="144" y="158" width="112" height="14" fill="#e0f2fe"/>
+          <text x="180" y="164" font-size="14">💻</text>
+          <rect x="154" y="180" width="60" height="7" rx="3" fill="#1e293b"/>
+          <rect x="154" y="193" width="85" height="5" rx="2" fill="#94a3b8"/>
+          <rect x="272" y="144" width="112" height="68" rx="14" fill="white" style="filter:drop-shadow(0 2px 8px rgba(0,0,0,0.08))"/>
+          <rect x="272" y="144" width="112" height="28" rx="14" fill="#fdf4ff"/>
+          <rect x="272" y="158" width="112" height="14" fill="#fdf4ff"/>
+          <text x="308" y="164" font-size="14">🌙</text>
+          <rect x="282" y="180" width="60" height="7" rx="3" fill="#1e293b"/>
+          <rect x="282" y="193" width="85" height="5" rx="2" fill="#94a3b8"/>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#D85A30"></span><span class="kw-name">카드형 레이아웃</span></div>
+        <div class="kw-en">Card Layout</div>
+        <div class="kw-desc">정보를 카드 모양의 박스에 담아 그리드로 정렬.</div>
+        <ul class="kw-points">
+          <li>트위터·에어비앤비 같은 박스 단위 정보</li>
+          <li>스크롤하며 보기 편함</li>
+          <li>메모·기록·일정 앱에 잘 어울림</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"카드형 레이아웃, 3열 그리드, 각 카드에 이모지와 제목"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 한페이지 스크롤 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gHero" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#1e3a5f"/>
+              <stop offset="100%" style="stop-color:#0f172a"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="225" fill="url(#gHero)"/>
+          <!-- 헤더 -->
+          <rect x="0" y="0" width="400" height="36" fill="rgba(255,255,255,0.05)"/>
+          <rect x="16" y="10" width="50" height="16" rx="4" fill="white" fill-opacity="0.2"/>
+          <rect x="250" y="10" width="32" height="16" rx="8" fill="transparent" stroke="white" stroke-opacity="0.3" stroke-width="1"/>
+          <rect x="292" y="10" width="32" height="16" rx="8" fill="transparent" stroke="white" stroke-opacity="0.3" stroke-width="1"/>
+          <rect x="334" y="10" width="50" height="16" rx="8" fill="white" fill-opacity="0.9"/>
+          <text x="344" y="22" font-size="9" fill="#1e3a5f" font-family="sans-serif" font-weight="600">시작</text>
+          <!-- Hero 섹션 -->
+          <text x="50" y="74" font-size="20" font-weight="bold" fill="white" font-family="sans-serif">나만의 앱 만들기</text>
+          <text x="50" y="92" font-size="11" fill="rgba(255,255,255,0.6)" font-family="sans-serif">아이디어를 현실로 — AI와 함께</text>
+          <rect x="50" y="104" width="90" height="24" rx="12" fill="white"/>
+          <rect x="150" y="104" width="90" height="24" rx="12" fill="transparent" stroke="white" stroke-opacity="0.4" stroke-width="1"/>
+          <text x="68" y="120" font-size="10" fill="#1e3a5f" font-family="sans-serif" font-weight="600">지금 시작하기</text>
+          <text x="174" y="120" font-size="10" fill="white" font-family="sans-serif" fill-opacity="0.8">더 알아보기</text>
+          <!-- 섹션 구분 점 -->
+          <circle cx="196" cy="198" r="5" fill="white" fill-opacity="0.8"/>
+          <circle cx="210" cy="198" r="4" fill="white" fill-opacity="0.3"/>
+          <circle cx="223" cy="198" r="4" fill="white" fill-opacity="0.3"/>
+          <circle cx="236" cy="198" r="4" fill="white" fill-opacity="0.3"/>
+          <!-- 아래 화살표 -->
+          <text x="192" y="218" font-size="16" fill="white" fill-opacity="0.5">↓</text>
+          <!-- 우측 장식 -->
+          <rect x="260" y="50" width="120" height="140" rx="16" fill="white" fill-opacity="0.05" stroke="white" stroke-opacity="0.1" stroke-width="1"/>
+          <circle cx="320" cy="110" r="35" fill="white" fill-opacity="0.05"/>
+          <text x="300" y="117" font-size="28">🚀</text>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#D85A30"></span><span class="kw-name">한 페이지 스크롤</span></div>
+        <div class="kw-en">Single Page Scroll</div>
+        <div class="kw-desc">페이지 이동 없이 아래로 스크롤하며 보는 구조.</div>
+        <ul class="kw-points">
+          <li>소개 페이지·포트폴리오에 많이 사용</li>
+          <li>스토리를 순서대로 이어서 보여주기 좋음</li>
+          <li>모바일에서 특히 사용하기 편함</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"한 페이지 스크롤, 섹션별 풀스크린, 스크롤 내비게이션"</code>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ 4. 효과 ══════════════ -->
+<section class="section" id="sec-effect">
+  <div class="section-head">
+    <div class="section-icon" style="background:#fbeaf0;">🩷</div>
+    <div>
+      <h2>효과 & 애니메이션</h2>
+      <p>화면이 움직이거나 전환될 때 쓰는 효과예요</p>
+    </div>
+  </div>
+  <div class="cards-grid">
+
+    <!-- 진행바 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#fafaf8"/>
+          <rect x="24" y="20" width="352" height="50" rx="14" fill="white" stroke="#e8e8e4" stroke-width="1"/>
+          <text x="40" y="42" font-size="12" fill="#1a1a1a" font-family="sans-serif" font-weight="600">오늘 목표</text>
+          <text x="40" y="58" font-size="10" fill="#999" font-family="sans-serif">물 2L 마시기</text>
+          <text x="320" y="50" font-size="14" font-weight="bold" fill="#22c55e" font-family="sans-serif">75%</text>
+          <rect x="24" y="82" width="352" height="44" rx="12" fill="white" stroke="#e8e8e4" stroke-width="1"/>
+          <text x="40" y="100" font-size="11" fill="#555" font-family="sans-serif">독서 목표</text>
+          <rect x="40" y="106" width="278" height="10" rx="5" fill="#f0f0ee"/>
+          <rect x="40" y="106" width="180" height="10" rx="5" fill="#f59e0b"/>
+          <text x="328" y="116" font-size="10" fill="#f59e0b" font-family="sans-serif" font-weight="600">65%</text>
+          <rect x="24" y="138" width="352" height="44" rx="12" fill="white" stroke="#e8e8e4" stroke-width="1"/>
+          <text x="40" y="156" font-size="11" fill="#555" font-family="sans-serif">운동 목표</text>
+          <rect x="40" y="162" width="278" height="10" rx="5" fill="#f0f0ee"/>
+          <rect x="40" y="162" width="240" height="10" rx="5" fill="#3b82f6"/>
+          <text x="328" y="172" font-size="10" fill="#3b82f6" font-family="sans-serif" font-weight="600">86%</text>
+          <rect x="24" y="194" width="352" height="22" rx="11" fill="white" stroke="#e8e8e4" stroke-width="1"/>
+          <text x="40" y="209" font-size="11" fill="#555" font-family="sans-serif">수면 목표</text>
+          <rect x="160" y="200" width="176" height="10" rx="5" fill="#f0f0ee"/>
+          <rect x="160" y="200" width="90" height="10" rx="5" fill="#8b5cf6"/>
+          <text x="344" y="209" font-size="10" fill="#8b5cf6" font-family="sans-serif" font-weight="600">51%</text>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#D4537E"></span><span class="kw-name">진행바</span></div>
+        <div class="kw-en">Progress Bar</div>
+        <div class="kw-desc">작업 진행 상황을 시각적으로 보여주는 막대.</div>
+        <ul class="kw-points">
+          <li>"오늘 목표 75% 달성!" 같은 표현</li>
+          <li>색상과 %로 성취감을 시각화</li>
+          <li>습관·운동·공부 앱의 핵심 요소</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"목표 달성률을 컬러 진행바와 퍼센트로 표시"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 호버 효과 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#f8f9fa"/>
+          <text x="30" y="36" font-size="13" fill="#888" font-family="sans-serif">마우스를 올리면 변해요!</text>
+          <!-- 일반 버튼들 -->
+          <rect x="30" y="52" width="100" height="36" rx="10" fill="#3b82f6"/>
+          <text x="55" y="74" font-size="12" fill="white" font-family="sans-serif">클릭</text>
+          <rect x="146" y="52" width="100" height="36" rx="18" fill="#f0f0ee" stroke="#ddd" stroke-width="1.5"/>
+          <text x="173" y="74" font-size="12" fill="#555" font-family="sans-serif">버튼</text>
+          <rect x="262" y="52" width="108" height="36" rx="10" fill="transparent" stroke="#3b82f6" stroke-width="2"/>
+          <text x="291" y="74" font-size="12" fill="#3b82f6" font-family="sans-serif">테두리</text>
+          <!-- 호버 상태 카드 -->
+          <rect x="30" y="104" width="160" height="96" rx="14" fill="white" stroke="#e8e8e4" stroke-width="1"/>
+          <text x="50" y="130" font-size="11" fill="#888" font-family="sans-serif">일반 상태</text>
+          <rect x="50" y="140" width="100" height="8" rx="4" fill="#e8e8e4"/>
+          <rect x="50" y="154" width="70" height="8" rx="4" fill="#e8e8e4"/>
+          <rect x="50" y="172" width="88" height="20" rx="10" fill="#f0f0ee"/>
+          <text x="70" y="185" font-size="10" fill="#999" font-family="sans-serif">자세히</text>
+          <rect x="210" y="96" width="160" height="110" rx="14" fill="white" stroke="#3b82f6" stroke-width="2" style="filter:drop-shadow(0 8px 24px rgba(59,130,246,0.2))"/>
+          <rect x="210" y="96" width="160" height="4" rx="2" fill="#3b82f6"/>
+          <text x="228" y="122" font-size="11" fill="#1a1a1a" font-family="sans-serif" font-weight="600">호버 상태 ✨</text>
+          <rect x="228" y="132" width="100" height="8" rx="4" fill="#bfdbfe"/>
+          <rect x="228" y="146" width="70" height="8" rx="4" fill="#bfdbfe"/>
+          <rect x="228" y="166" width="88" height="22" rx="11" fill="#3b82f6"/>
+          <text x="247" y="180" font-size="10" fill="white" font-family="sans-serif" font-weight="600">자세히</text>
+          <text x="368" y="148" font-size="14">←</text>
+          <text x="196" y="205" font-size="10" fill="#888" font-family="sans-serif">이렇게 변해요!</text>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#D4537E"></span><span class="kw-name">호버 효과</span></div>
+        <div class="kw-en">Hover Effect</div>
+        <div class="kw-desc">마우스를 올리면 색이나 크기가 바뀌는 효과.</div>
+        <ul class="kw-points">
+          <li>버튼·카드에 마우스 올리면 색 변경</li>
+          <li>"클릭할 수 있어요"라는 힌트를 시각적으로 줌</li>
+          <li>인터랙티브하고 살아있는 느낌</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"모든 버튼과 카드에 호버 시 색상 변화 효과 추가"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 파티클·반짝 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#0d0d1a"/>
+          <circle cx="50" cy="40" r="2" fill="#ffffff" opacity="0.8"/>
+          <circle cx="120" cy="20" r="1.5" fill="#00ffff" opacity="0.6"/>
+          <circle cx="200" cy="35" r="2.5" fill="#ffffff" opacity="0.5"/>
+          <circle cx="280" cy="15" r="1.5" fill="#ff00ff" opacity="0.7"/>
+          <circle cx="350" cy="45" r="2" fill="#ffff00" opacity="0.6"/>
+          <circle cx="80" cy="80" r="1.5" fill="#00ff88" opacity="0.5"/>
+          <circle cx="160" cy="65" r="2" fill="#ffffff" opacity="0.7"/>
+          <circle cx="240" cy="75" r="1" fill="#ff6b9d" opacity="0.8"/>
+          <circle cx="320" cy="90" r="2.5" fill="#ffffff" opacity="0.4"/>
+          <circle cx="370" cy="70" r="1.5" fill="#00ffff" opacity="0.6"/>
+          <circle cx="30" cy="150" r="1.5" fill="#ffffff" opacity="0.5"/>
+          <circle cx="100" cy="170" r="2" fill="#ffff00" opacity="0.6"/>
+          <circle cx="180" cy="140" r="1.5" fill="#00ff88" opacity="0.7"/>
+          <circle cx="260" cy="160" r="2.5" fill="#ffffff" opacity="0.4"/>
+          <circle cx="340" cy="145" r="1.5" fill="#ff00ff" opacity="0.8"/>
+          <circle cx="390" cy="165" r="2" fill="#00ffff" opacity="0.5"/>
+          <circle cx="55" cy="200" r="1" fill="#ffffff" opacity="0.6"/>
+          <circle cx="145" cy="215" r="2" fill="#ff6b9d" opacity="0.7"/>
+          <circle cx="300" cy="205" r="1.5" fill="#ffffff" opacity="0.5"/>
+          <circle cx="370" cy="195" r="2.5" fill="#00ff88" opacity="0.6"/>
+          <rect x="100" y="85" width="200" height="80" rx="16" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <text x="150" y="120" font-size="22" font-weight="bold" fill="white" font-family="sans-serif">✨ 완료!</text>
+          <text x="138" y="142" font-size="11" fill="rgba(255,255,255,0.6)" font-family="sans-serif">목표를 달성했어요</text>
+          <text x="70" y="108" font-size="20">⭐</text>
+          <text x="308" y="108" font-size="20">🎉</text>
+          <text x="82" y="148" font-size="14">✦</text>
+          <text x="305" y="148" font-size="14">✦</text>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#D4537E"></span><span class="kw-name">파티클 / 반짝 효과</span></div>
+        <div class="kw-en">Particle / Sparkle Effect</div>
+        <div class="kw-desc">화면에 작은 점들이 흩날리는 배경 효과.</div>
+        <ul class="kw-points">
+          <li>목표 달성·레벨업 시 폭죽 효과</li>
+          <li>배경에 별이 떠다니는 우주 분위기</li>
+          <li>게임·이벤트 화면에 특히 효과적</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"목표 달성 시 파티클 효과, 배경에 별 떠다니는 애니메이션"</code>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ 5. 감성 ══════════════ -->
+<section class="section" id="sec-feel">
+  <div class="section-head">
+    <div class="section-icon" style="background:#faeeda;">🟡</div>
+    <div>
+      <h2>느낌 & 감성</h2>
+      <p>앱의 "분위기"를 완성하는 마지막 키워드예요</p>
+    </div>
+  </div>
+  <div class="cards-grid">
+
+    <!-- 게임 느낌 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gGame" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#1a0533"/>
+              <stop offset="100%" style="stop-color:#0d1b2a"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="225" fill="url(#gGame)"/>
+          <text x="16" y="32" font-size="13" font-weight="bold" fill="#ffd700" font-family="monospace">⚔️ HERO QUEST</text>
+          <rect x="290" y="10" width="95" height="24" rx="12" fill="#ffd700" fill-opacity="0.15" stroke="#ffd700" stroke-opacity="0.3" stroke-width="1"/>
+          <text x="300" y="26" font-size="10" fill="#ffd700" font-family="monospace">🏆 RANK #42</text>
+          <!-- 캐릭터 정보 -->
+          <rect x="16" y="44" width="200" height="56" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,215,0,0.3)" stroke-width="1"/>
+          <circle cx="50" cy="72" r="20" fill="#8b5cf6" fill-opacity="0.6"/>
+          <text x="40" y="78" font-size="16">🧙</text>
+          <rect x="80" y="52" width="100" height="8" rx="4" fill="rgba(255,255,255,0.15)"/>
+          <text x="80" y="62" font-size="9" fill="#ffd700" font-family="monospace">LEVEL 15 마법사</text>
+          <rect x="80" y="68" width="120" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
+          <rect x="80" y="68" width="85" height="6" rx="3" fill="#22c55e"/>
+          <text x="80" y="84" font-size="8" fill="#94a3b8" font-family="monospace">HP 850/1200</text>
+          <rect x="80" y="88" width="120" height="5" rx="2" fill="rgba(255,255,255,0.1)"/>
+          <rect x="80" y="88" width="100" height="5" rx="2" fill="#3b82f6"/>
+          <text x="80" y="102" font-size="8" fill="#94a3b8" font-family="monospace">MP 500/600</text>
+          <!-- 업적 배지 -->
+          <text x="16" y="122" font-size="9" fill="#94a3b8" font-family="monospace" letter-spacing="2">ACHIEVEMENTS</text>
+          <rect x="16" y="128" width="44" height="44" rx="10" fill="#ffd700" fill-opacity="0.1" stroke="#ffd700" stroke-opacity="0.4" stroke-width="1"/>
+          <text x="26" y="155" font-size="18">⚔️</text>
+          <rect x="68" y="128" width="44" height="44" rx="10" fill="#ff6b9d" fill-opacity="0.1" stroke="#ff6b9d" stroke-opacity="0.4" stroke-width="1"/>
+          <text x="78" y="155" font-size="18">🔥</text>
+          <rect x="120" y="128" width="44" height="44" rx="10" fill="#22c55e" fill-opacity="0.1" stroke="#22c55e" stroke-opacity="0.4" stroke-width="1"/>
+          <text x="130" y="155" font-size="18">🏆</text>
+          <rect x="172" y="128" width="44" height="44" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="3,3"/>
+          <text x="184" y="155" font-size="18" opacity="0.3">🔒</text>
+          <!-- XP 바 -->
+          <text x="16" y="192" font-size="9" fill="#94a3b8" font-family="monospace">EXP</text>
+          <rect x="16" y="198" width="200" height="10" rx="5" fill="rgba(255,255,255,0.06)"/>
+          <rect x="16" y="198" width="140" height="10" rx="5" fill="#8b5cf6"/>
+          <text x="222" y="207" font-size="9" fill="#8b5cf6" font-family="monospace">7,200 / 10,000</text>
+          <!-- 오른쪽 패널 -->
+          <rect x="232" y="44" width="152" height="170" rx="10" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+          <text x="248" y="62" font-size="9" fill="#94a3b8" font-family="monospace">TODAY QUEST</text>
+          <rect x="244" y="68" width="128" height="28" rx="8" fill="rgba(34,197,94,0.1)" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+          <text x="255" y="87" font-size="10" fill="#22c55e" font-family="sans-serif">✅ 수학 문제 10개 풀기</text>
+          <rect x="244" y="102" width="128" height="28" rx="8" fill="rgba(59,130,246,0.1)" stroke="rgba(59,130,246,0.3)" stroke-width="1"/>
+          <text x="255" y="121" font-size="10" fill="#3b82f6" font-family="sans-serif">📖 독서 30분</text>
+          <rect x="244" y="136" width="128" height="28" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <text x="255" y="155" font-size="10" fill="#64748b" font-family="sans-serif">🏃 운동 20분</text>
+          <rect x="244" y="172" width="128" height="32" rx="16" fill="#ffd700"/>
+          <text x="275" y="191" font-size="12" fill="#1a0533" font-family="sans-serif" font-weight="700">퀘스트 시작!</text>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#BA7517"></span><span class="kw-name">게임 느낌</span></div>
+        <div class="kw-en">Gamified</div>
+        <div class="kw-desc">점수·레벨·배지 등 게임 요소를 녹인 디자인.</div>
+        <ul class="kw-points">
+          <li>공부·운동을 게임처럼 → 더 재미있어짐</li>
+          <li>"레벨업!", "연속 달성 🔥" 피드백</li>
+          <li>두올링고·포켓몬GO가 대표적</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"게이미피케이션, 레벨·XP·배지 시스템, 퀘스트 목록"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 프로페셔널 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#ffffff"/>
+          <rect x="0" y="0" width="400" height="54" fill="#0f172a"/>
+          <rect x="24" y="18" width="6" height="20" rx="1" fill="#3b82f6"/>
+          <rect x="36" y="18" width="60" height="10" rx="2" fill="white" fill-opacity="0.9"/>
+          <rect x="36" y="32" width="40" height="6" rx="2" fill="white" fill-opacity="0.4"/>
+          <rect x="240" y="20" width="55" height="14" rx="4" fill="rgba(255,255,255,0.1)"/>
+          <rect x="305" y="20" width="55" height="14" rx="4" fill="rgba(255,255,255,0.1)"/>
+          <rect x="370" y="18" width="12" height="4" rx="1" fill="rgba(255,255,255,0.5)"/>
+          <rect x="370" y="25" width="12" height="4" rx="1" fill="rgba(255,255,255,0.5)"/>
+          <rect x="370" y="32" width="12" height="4" rx="1" fill="rgba(255,255,255,0.5)"/>
+          <rect x="24" y="68" width="165" height="70" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+          <rect x="36" y="78" width="60" height="6" rx="2" fill="#94a3b8"/>
+          <text x="36" y="106" font-size="22" font-weight="bold" fill="#0f172a" font-family="sans-serif">₩ 1,280만</text>
+          <rect x="36" y="116" width="80" height="14" rx="4" fill="#dcfce7"/>
+          <text x="42" y="127" font-size="9" fill="#16a34a" font-family="sans-serif" font-weight="600">▲ 12.4% 전월 대비</text>
+          <rect x="204" y="68" width="165" height="70" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+          <rect x="216" y="78" width="60" height="6" rx="2" fill="#94a3b8"/>
+          <text x="216" y="106" font-size="22" font-weight="bold" fill="#0f172a" font-family="sans-serif">2,481</text>
+          <rect x="216" y="116" width="70" height="14" rx="4" fill="#fee2e2"/>
+          <text x="222" y="127" font-size="9" fill="#dc2626" font-family="sans-serif" font-weight="600">▼ 3.1% 전월 대비</text>
+          <rect x="24" y="152" width="352" height="56" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+          <rect x="36" y="162" width="80" height="6" rx="2" fill="#94a3b8"/>
+          <rect x="36" y="176" width="280" height="1" fill="#e2e8f0"/>
+          <rect x="36" y="178" width="60" height="6" rx="2" fill="#0f172a"/>
+          <rect x="36" y="188" width="140" height="6" rx="2" fill="#94a3b8"/>
+          <rect x="36" y="178" width="280" height="5" rx="0" fill="#f1f5f9"/>
+          <rect x="36" y="178" width="180" height="5" rx="0" fill="#3b82f6"/>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#BA7517"></span><span class="kw-name">프로페셔널</span></div>
+        <div class="kw-en">Professional</div>
+        <div class="kw-desc">업무용처럼 정돈되고 신뢰감 있는 디자인.</div>
+        <ul class="kw-points">
+          <li>네이비·회색·흰색 계열 색상</li>
+          <li>정돈된 표와 데이터 중심 표현</li>
+          <li>발표 자료·포트폴리오·업무 앱에 적합</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"프로페셔널한 기업 스타일, 네이비·흰색, 데이터 중심"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 아티스틱 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#fefdf8"/>
+          <ellipse cx="320" cy="50" rx="80" ry="60" fill="#fde68a" opacity="0.4"/>
+          <ellipse cx="60" cy="180" rx="70" ry="55" fill="#fbcfe8" opacity="0.4"/>
+          <ellipse cx="200" cy="120" rx="90" ry="70" fill="#a5f3fc" opacity="0.2"/>
+          <path d="M 40 80 Q 80 40 130 70 Q 160 90 140 130 Q 120 165 80 150 Q 30 130 40 80" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M 180 50 Q 230 20 280 60 Q 310 90 280 130 Q 250 160 200 140 Q 160 115 180 50" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
+          <path d="M 300 140 Q 350 110 370 155 Q 380 185 350 195 Q 315 200 300 175 Q 290 155 300 140" fill="#fde68a" opacity="0.6" stroke="#f59e0b" stroke-width="1.5"/>
+          <circle cx="90" cy="110" r="20" fill="#fb923c" opacity="0.6"/>
+          <circle cx="245" cy="90" r="25" fill="#c084fc" opacity="0.5"/>
+          <circle cx="340" cy="165" r="18" fill="#34d399" opacity="0.5"/>
+          <text x="68" y="116" font-size="14" fill="white">🎨</text>
+          <text x="222" y="97" font-size="18" fill="white">✦</text>
+          <text x="322" y="172" font-size="13" fill="white">◇</text>
+          <rect x="20" y="170" width="140" height="36" rx="18" fill="rgba(255,255,255,0.7)" stroke="#f97316" stroke-width="1.5"/>
+          <text x="38" y="192" font-size="12" fill="#1a1a1a" font-family="serif">나의 작품 갤러리 🖌️</text>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#BA7517"></span><span class="kw-name">아티스틱</span></div>
+        <div class="kw-en">Artistic</div>
+        <div class="kw-desc">그림이나 예술 작품 같은 개성 있는 디자인.</div>
+        <ul class="kw-points">
+          <li>손 그림, 수채화, 콜라주 스타일</li>
+          <li>정해진 규칙 없이 자유로운 레이아웃</li>
+          <li>창작·갤러리·포트폴리오 앱에 어울림</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"아티스틱, 손 그림 느낌, 불규칙한 도형과 수채화 색감"</code>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+</main>
+
+<footer class="site-footer">
+  바이브코딩 수행평가 도움 자료 · <span>Gemini AI 활용</span>
+</footer>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const sections = document.querySelectorAll('.section');
+  sections.forEach(s => {
+    if (id === 'all') {
+      s.classList.remove('hidden');
+    } else {
+      const match = s.id === 'sec-' + id;
+      s.classList.toggle('hidden', !match);
+    }
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
