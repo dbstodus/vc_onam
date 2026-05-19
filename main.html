@@ -250,6 +250,7 @@ body {
   <button class="tab-btn" onclick="showSection('layout', this)">🔴 레이아웃</button>
   <button class="tab-btn" onclick="showSection('effect', this)">🟠 효과</button>
   <button class="tab-btn" onclick="showSection('feel', this)">🟡 감성</button>
+  <button class="tab-btn" onclick="showSection('typo', this)">🔵 타이포그래피</button>
 </nav>
 
 <main class="main">
@@ -529,6 +530,114 @@ body {
       </div>
     </div>
 
+    <!-- 스크랩북 / 콜라주 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#f5f0e8"/>
+          <!-- 배경 격자 -->
+          <line x1="0" y1="30" x2="400" y2="30" stroke="#e0d8cc" stroke-width="0.8"/>
+          <line x1="0" y1="60" x2="400" y2="60" stroke="#e0d8cc" stroke-width="0.8"/>
+          <line x1="0" y1="90" x2="400" y2="90" stroke="#e0d8cc" stroke-width="0.8"/>
+          <line x1="0" y1="120" x2="400" y2="120" stroke="#e0d8cc" stroke-width="0.8"/>
+          <line x1="0" y1="150" x2="400" y2="150" stroke="#e0d8cc" stroke-width="0.8"/>
+          <line x1="0" y1="180" x2="400" y2="180" stroke="#e0d8cc" stroke-width="0.8"/>
+          <line x1="0" y1="210" x2="400" y2="210" stroke="#e0d8cc" stroke-width="0.8"/>
+          <!-- 기울어진 포토카드들 -->
+          <rect x="18" y="20" width="120" height="85" rx="3" fill="white" transform="rotate(-4 78 62)" style="filter:drop-shadow(2px 3px 5px rgba(0,0,0,0.15))"/>
+          <rect x="28" y="28" width="100" height="58" rx="2" fill="#d4c9b8" transform="rotate(-4 78 62)"/>
+          <text x="52" y="70" font-size="26" transform="rotate(-4 78 62)">🌸</text>
+          <rect x="28" y="88" width="80" height="8" rx="1" fill="#c9bba8" transform="rotate(-4 78 62)"/>
+          <!-- 두번째 포토카드 -->
+          <rect x="148" y="14" width="110" height="90" rx="3" fill="white" transform="rotate(3 203 59)" style="filter:drop-shadow(2px 3px 5px rgba(0,0,0,0.12))"/>
+          <rect x="156" y="22" width="94" height="62" rx="2" fill="#b8d4c9" transform="rotate(3 203 59)"/>
+          <text x="185" y="60" font-size="24" transform="rotate(3 203 59)">🌊</text>
+          <rect x="158" y="86" width="70" height="7" rx="1" fill="#a8c4bb" transform="rotate(3 203 59)"/>
+          <!-- 세번째 포토카드 -->
+          <rect x="278" y="18" width="105" height="88" rx="3" fill="white" transform="rotate(-2 330 62)" style="filter:drop-shadow(2px 3px 5px rgba(0,0,0,0.13))"/>
+          <rect x="286" y="26" width="89" height="60" rx="2" fill="#d4b8d4" transform="rotate(-2 330 62)"/>
+          <text x="315" y="62" font-size="24" transform="rotate(-2 330 62)">🌙</text>
+          <rect x="288" y="88" width="68" height="7" rx="1" fill="#c4a8c4" transform="rotate(-2 330 62)"/>
+          <!-- 테이프 효과 -->
+          <rect x="68" y="12" width="32" height="10" rx="1" fill="#ffd700" fill-opacity="0.55" transform="rotate(-4 84 17)"/>
+          <rect x="195" y="8" width="32" height="10" rx="1" fill="#ffd700" fill-opacity="0.55" transform="rotate(3 211 13)"/>
+          <rect x="318" y="11" width="32" height="10" rx="1" fill="#ffd700" fill-opacity="0.55" transform="rotate(-2 334 16)"/>
+          <!-- 하단 스티커/메모 -->
+          <rect x="18" y="148" width="120" height="60" rx="4" fill="#fff8b0" style="filter:drop-shadow(1px 2px 4px rgba(0,0,0,0.1))"/>
+          <text x="32" y="170" font-size="10" fill="#7a6a30" font-family="serif">오늘도 좋은 하루 ✨</text>
+          <text x="32" y="185" font-size="9" fill="#9a8a50" font-family="serif">기억하고 싶은 순간들</text>
+          <rect x="155" y="148" width="220" height="60" rx="4" fill="white" stroke="#e0d0c0" stroke-width="1" style="filter:drop-shadow(1px 2px 4px rgba(0,0,0,0.08))"/>
+          <text x="170" y="166" font-size="9" fill="#888" font-family="sans-serif">스티커</text>
+          <text x="200" y="185" font-size="20">⭐</text>
+          <text x="228" y="185" font-size="20">🎀</text>
+          <text x="256" y="185" font-size="20">🍀</text>
+          <text x="284" y="185" font-size="20">💛</text>
+          <text x="312" y="185" font-size="20">🌈</text>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#BA7517"></span><span class="kw-name">스크랩북 / 콜라주</span></div>
+        <div class="kw-en">Scrapbook / Collage</div>
+        <div class="kw-desc">사진·스티커·메모를 붙인 듯한 아날로그 감성 디자인.</div>
+        <ul class="kw-points">
+          <li>기울어진 사진, 테이프, 손글씨 느낌</li>
+          <li>격자 배경지 + 노트 용지 질감</li>
+          <li>다이어리·추억 앱·SNS 다이어리에 어울림</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"스크랩북 콜라주 스타일, 기울어진 포토카드, 마스킹테이프, 격자 배경"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 팝아트 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="dots" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+              <circle cx="6" cy="6" r="3" fill="#ff073a" opacity="0.18"/>
+            </pattern>
+          </defs>
+          <rect width="400" height="225" fill="#fff200"/>
+          <rect width="400" height="225" fill="url(#dots)"/>
+          <!-- 굵은 테두리 패널 -->
+          <rect x="16" y="14" width="176" height="196" rx="4" fill="#00b4ff" stroke="#1a1a1a" stroke-width="3"/>
+          <rect x="208" y="14" width="176" height="94" rx="4" fill="#ff073a" stroke="#1a1a1a" stroke-width="3"/>
+          <rect x="208" y="124" width="176" height="86" rx="4" fill="#00e676" stroke="#1a1a1a" stroke-width="3"/>
+          <!-- 왼쪽 패널 내용 -->
+          <text x="104" y="80" font-size="46" text-anchor="middle">💥</text>
+          <rect x="30" y="108" width="148" height="36" rx="2" fill="#fff200" stroke="#1a1a1a" stroke-width="2.5"/>
+          <text x="104" y="132" font-size="15" font-weight="bold" fill="#1a1a1a" text-anchor="middle" font-family="sans-serif">POW!</text>
+          <rect x="30" y="152" width="148" height="44" rx="2" fill="white" stroke="#1a1a1a" stroke-width="2"/>
+          <text x="104" y="169" font-size="10" fill="#1a1a1a" text-anchor="middle" font-family="sans-serif" font-weight="700">굵은 외곽선</text>
+          <text x="104" y="184" font-size="10" fill="#1a1a1a" text-anchor="middle" font-family="sans-serif">원색 + 강렬한 패턴</text>
+          <!-- 오른쪽 상단 -->
+          <text x="296" y="76" font-size="36" text-anchor="middle">⚡</text>
+          <text x="296" y="100" font-size="13" font-weight="bold" fill="white" text-anchor="middle" font-family="sans-serif">BOOM!</text>
+          <!-- 오른쪽 하단 -->
+          <rect x="220" y="136" width="152" height="62" rx="2" fill="#fff200" stroke="#1a1a1a" stroke-width="2"/>
+          <text x="296" y="160" font-size="11" font-weight="bold" fill="#1a1a1a" text-anchor="middle" font-family="sans-serif">POP ART</text>
+          <text x="296" y="178" font-size="9" fill="#1a1a1a" text-anchor="middle" font-family="sans-serif">앤디 워홀 스타일</text>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#7F77DD"></span><span class="kw-name">팝아트</span></div>
+        <div class="kw-en">Pop Art</div>
+        <div class="kw-desc">만화·광고처럼 원색과 굵은 선을 쓰는 강렬한 스타일.</div>
+        <ul class="kw-points">
+          <li>빨강·노랑·파랑 원색을 과감하게</li>
+          <li>굵은 검정 외곽선 (두꺼운 border)</li>
+          <li>이벤트·캠페인·홍보용 페이지에 어울림</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"팝아트 스타일, 원색 배경에 굵은 검정 테두리, 만화 말풍선"</code>
+        </div>
+      </div>
+    </div>
+
     <!-- 자연스러운 코지 -->
     <div class="kw-card">
       <div class="preview-area">
@@ -735,6 +844,59 @@ body {
       </div>
     </div>
 
+    <!-- 모노크롬 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#f9f9f9"/>
+          <rect x="0" y="0" width="400" height="48" fill="#111111"/>
+          <rect x="20" y="14" width="70" height="20" rx="4" fill="#333"/>
+          <circle cx="360" cy="24" r="12" fill="#333"/>
+          <circle cx="384" cy="24" r="12" fill="#555"/>
+          <!-- 메인 이미지 영역 (그레이스케일 사진 느낌) -->
+          <rect x="20" y="62" width="180" height="110" rx="8" fill="#222"/>
+          <rect x="30" y="72" width="160" height="90" rx="4" fill="#444"/>
+          <ellipse cx="100" cy="105" rx="36" ry="36" fill="#555"/>
+          <text x="80" y="113" font-size="28">🌑</text>
+          <rect x="20" y="182" width="180" height="20" rx="0" fill="#1a1a1a"/>
+          <rect x="28" y="189" width="80" height="6" rx="3" fill="#555"/>
+          <!-- 오른쪽 텍스트 영역 -->
+          <rect x="212" y="62" width="168" height="140" rx="8" fill="#f0f0f0"/>
+          <rect x="224" y="76" width="80" height="10" rx="3" fill="#111"/>
+          <rect x="224" y="94" width="140" height="6" rx="3" fill="#aaa"/>
+          <rect x="224" y="106" width="120" height="6" rx="3" fill="#aaa"/>
+          <rect x="224" y="118" width="135" height="6" rx="3" fill="#aaa"/>
+          <rect x="224" y="138" width="60" height="1" fill="#888"/>
+          <rect x="224" y="150" width="36" height="7" rx="1" fill="#333"/>
+          <rect x="266" y="148" width="36" height="10" rx="5" fill="#111"/>
+          <text x="274" y="157" font-size="9" fill="#fff" font-family="sans-serif">보기</text>
+          <!-- 하단 팔레트 스워치 -->
+          <rect x="20" y="208" width="360" height="10" rx="0" fill="#f0f0f0"/>
+          <rect x="20" y="208" width="50" height="10" fill="#111"/>
+          <rect x="70" y="208" width="50" height="10" fill="#333"/>
+          <rect x="120" y="208" width="50" height="10" fill="#555"/>
+          <rect x="170" y="208" width="50" height="10" fill="#888"/>
+          <rect x="220" y="208" width="50" height="10" fill="#aaa"/>
+          <rect x="270" y="208" width="50" height="10" fill="#ccc"/>
+          <rect x="320" y="208" width="60" height="10" fill="#eee"/>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#1D9E75"></span><span class="kw-name">모노크롬</span></div>
+        <div class="kw-en">Monochrome</div>
+        <div class="kw-desc">흑백 또는 단색 계열만 사용한 절제된 색감.</div>
+        <ul class="kw-points">
+          <li>검정·흰색·회색만으로 세련미 표현</li>
+          <li>하나의 색 톤을 단계별로 쓰는 방법도 있음</li>
+          <li>사진 포트폴리오, 패션·아트 앱에 어울림</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"모노크롬, 흑백 팔레트, 회색 계열만 사용한 미니멀 UI"</code>
+        </div>
+      </div>
+    </div>
+
     <!-- 네온 -->
     <div class="kw-card">
       <div class="preview-area">
@@ -791,6 +953,103 @@ body {
     </div>
   </div>
   <div class="cards-grid">
+
+    <!-- 채팅/메신저형 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#f0f2f5"/>
+          <!-- 상단 헤더 -->
+          <rect x="0" y="0" width="400" height="48" fill="#ffffff" style="filter:drop-shadow(0 1px 4px rgba(0,0,0,0.1))"/>
+          <circle cx="30" cy="24" r="14" fill="#3b82f6"/>
+          <text x="20" y="30" font-size="14" fill="white">🤖</text>
+          <rect x="52" y="14" width="60" height="8" rx="3" fill="#1a1a1a"/>
+          <rect x="52" y="28" width="40" height="6" rx="3" fill="#22c55e"/>
+          <circle cx="370" cy="24" r="10" fill="#f0f0f0"/>
+          <!-- 날짜 구분선 -->
+          <rect x="165" y="60" width="70" height="18" rx="9" fill="rgba(0,0,0,0.08)"/>
+          <text x="200" y="73" font-size="9" fill="#666" text-anchor="middle" font-family="sans-serif">오늘</text>
+          <!-- 상대방 말풍선 -->
+          <rect x="16" y="86" width="180" height="36" rx="18" rx2="4" fill="white" style="filter:drop-shadow(0 1px 3px rgba(0,0,0,0.1))"/>
+          <text x="30" y="108" font-size="11" fill="#1a1a1a" font-family="sans-serif">안녕! 오늘 뭐 해? 🙂</text>
+          <!-- 내 말풍선 -->
+          <rect x="200" y="134" width="184" height="36" rx="18" fill="#3b82f6"/>
+          <text x="216" y="155" font-size="11" fill="white" font-family="sans-serif">공부하고 있어! 📚</text>
+          <!-- 상대방 두번째 -->
+          <rect x="16" y="182" width="200" height="36" rx="18" fill="white" style="filter:drop-shadow(0 1px 3px rgba(0,0,0,0.1))"/>
+          <text x="30" y="204" font-size="11" fill="#1a1a1a" font-family="sans-serif">오 멋지다 💪 파이팅!</text>
+          <!-- 입력창 -->
+          <rect x="10" y="10" width="380" height="225" fill="none"/>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#D85A30"></span><span class="kw-name">채팅 / 메신저형</span></div>
+        <div class="kw-en">Chat / Messenger</div>
+        <div class="kw-desc">카카오톡·문자처럼 말풍선으로 대화하는 UI.</div>
+        <ul class="kw-points">
+          <li>내 메시지는 오른쪽, 상대방은 왼쪽</li>
+          <li>AI 챗봇·상담 앱·Q&A 앱에 딱 맞음</li>
+          <li>자연스럽고 친근한 인터랙션 흐름</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"채팅 UI, 말풍선 레이아웃, 오른쪽 내 메시지·왼쪽 AI 답변"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 타임라인형 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#fafaf8"/>
+          <rect x="0" y="0" width="400" height="44" fill="#1a1a1a"/>
+          <rect x="20" y="14" width="80" height="16" rx="4" fill="#333"/>
+          <rect x="320" y="14" width="60" height="16" rx="8" fill="#3b82f6"/>
+          <text x="328" y="26" font-size="9" fill="white" font-family="sans-serif">+ 새 기록</text>
+          <!-- 세로 타임라인 선 -->
+          <line x1="52" y1="60" x2="52" y2="218" stroke="#e0e0e0" stroke-width="2"/>
+          <!-- 항목 1 -->
+          <circle cx="52" cy="76" r="10" fill="#3b82f6"/>
+          <text x="46" y="81" font-size="10" fill="white">✓</text>
+          <rect x="76" y="62" width="300" height="28" rx="8" fill="white" stroke="#e8e8e4" stroke-width="1"/>
+          <text x="90" y="74" font-size="10" fill="#1a1a1a" font-family="sans-serif" font-weight="600">수학 숙제 완료 📐</text>
+          <text x="90" y="84" font-size="9" fill="#999" font-family="sans-serif">오전 9:30</text>
+          <!-- 항목 2 -->
+          <circle cx="52" cy="120" r="10" fill="#22c55e"/>
+          <text x="46" y="125" font-size="10" fill="white">✓</text>
+          <rect x="76" y="106" width="300" height="28" rx="8" fill="white" stroke="#e8e8e4" stroke-width="1"/>
+          <text x="90" y="118" font-size="10" fill="#1a1a1a" font-family="sans-serif" font-weight="600">독서 30분 🍵</text>
+          <text x="90" y="128" font-size="9" fill="#999" font-family="sans-serif">오후 1:15</text>
+          <!-- 항목 3 (진행중) -->
+          <circle cx="52" cy="164" r="10" fill="#f59e0b" stroke="#fde68a" stroke-width="3"/>
+          <text x="46" y="169" font-size="11" fill="white">⋯</text>
+          <rect x="76" y="150" width="300" height="28" rx="8" fill="white" stroke="#fde68a" stroke-width="1.5"/>
+          <text x="90" y="162" font-size="10" fill="#1a1a1a" font-family="sans-serif" font-weight="600">운동 20분 🏃 진행중</text>
+          <text x="90" y="172" font-size="9" fill="#f59e0b" font-family="sans-serif">오후 4:00 ~</text>
+          <!-- 항목 4 (예정) -->
+          <circle cx="52" cy="208" r="10" fill="#e0e0e0"/>
+          <text x="46" y="213" font-size="11" fill="#aaa">○</text>
+          <rect x="76" y="194" width="300" height="28" rx="8" fill="#fafafa" stroke="#e8e8e4" stroke-width="1" stroke-dasharray="4,3"/>
+          <text x="90" y="206" font-size="10" fill="#aaa" font-family="sans-serif">저녁 일기 쓰기 ✏️</text>
+          <text x="90" y="216" font-size="9" fill="#ccc" font-family="sans-serif">오후 9:00 예정</text>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#D85A30"></span><span class="kw-name">타임라인형</span></div>
+        <div class="kw-en">Timeline</div>
+        <div class="kw-desc">시간 순서대로 사건·기록을 세로로 나열하는 구조.</div>
+        <ul class="kw-points">
+          <li>할 일·일정·히스토리 관리 앱에 적합</li>
+          <li>완료·진행중·예정을 색으로 구분</li>
+          <li>인스타그램 스토리 같은 시간 흐름 표현</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"타임라인 UI, 세로 시간축, 완료/진행/예정 상태 색상 구분"</code>
+        </div>
+      </div>
+    </div>
 
     <!-- 대시보드 -->
     <div class="kw-card">
@@ -987,6 +1246,100 @@ body {
   </div>
   <div class="cards-grid">
 
+    <!-- 로딩 스켈레톤 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#f0f0ee"/>
+              <stop offset="50%" style="stop-color:#e0e0de"/>
+              <stop offset="100%" style="stop-color:#f0f0ee"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="225" fill="#fafaf8"/>
+          <rect x="0" y="0" width="400" height="44" fill="#f4f4f2"/>
+          <rect x="16" y="14" width="60" height="16" rx="4" fill="url(#shimmer)"/>
+          <circle cx="370" cy="22" r="12" fill="url(#shimmer)"/>
+          <!-- 카드 1 스켈레톤 -->
+          <rect x="16" y="56" width="112" height="80" rx="10" fill="url(#shimmer)"/>
+          <rect x="16" y="144" width="80" height="10" rx="3" fill="url(#shimmer)"/>
+          <rect x="16" y="160" width="100" height="8" rx="3" fill="url(#shimmer)"/>
+          <!-- 카드 2 스켈레톤 -->
+          <rect x="144" y="56" width="112" height="80" rx="10" fill="url(#shimmer)"/>
+          <rect x="144" y="144" width="80" height="10" rx="3" fill="url(#shimmer)"/>
+          <rect x="144" y="160" width="100" height="8" rx="3" fill="url(#shimmer)"/>
+          <!-- 카드 3 스켈레톤 -->
+          <rect x="272" y="56" width="112" height="80" rx="10" fill="url(#shimmer)"/>
+          <rect x="272" y="144" width="80" height="10" rx="3" fill="url(#shimmer)"/>
+          <rect x="272" y="160" width="100" height="8" rx="3" fill="url(#shimmer)"/>
+          <!-- 리스트 스켈레톤 -->
+          <rect x="16" y="180" width="368" height="12" rx="4" fill="url(#shimmer)"/>
+          <rect x="16" y="198" width="280" height="12" rx="4" fill="url(#shimmer)"/>
+          <!-- 라벨 -->
+          <rect x="140" y="212" width="120" height="6" rx="3" fill="#e0e0de"/>
+          <text x="200" y="218" font-size="8" fill="#bbb" text-anchor="middle" font-family="sans-serif">로딩 중...</text>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#D4537E"></span><span class="kw-name">스켈레톤 로딩</span></div>
+        <div class="kw-en">Skeleton Loading</div>
+        <div class="kw-desc">데이터가 불러와지는 동안 회색 뼈대를 먼저 보여주는 효과.</div>
+        <ul class="kw-points">
+          <li>빈 화면 대신 레이아웃 모양을 미리 표시</li>
+          <li>유튜브·인스타그램이 사용하는 방식</li>
+          <li>기다리는 느낌을 줄여주는 UX 기법</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"스켈레톤 로딩 UI, 데이터 로딩 중 회색 플레이스홀더 표시"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 스와이프 카드 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#f0f2f5"/>
+          <!-- 뒤 카드들 (스택) -->
+          <rect x="60" y="28" width="280" height="170" rx="18" fill="#c7d7e8" transform="rotate(6 200 113)"/>
+          <rect x="46" y="24" width="280" height="170" rx="18" fill="#d4c8e8" transform="rotate(-4 200 113)"/>
+          <!-- 앞 카드 (현재 카드) -->
+          <rect x="50" y="20" width="300" height="180" rx="18" fill="white" style="filter:drop-shadow(0 12px 32px rgba(0,0,0,0.18))"/>
+          <!-- 카드 내용 -->
+          <rect x="50" y="20" width="300" height="80" rx="18" fill="#667eea"/>
+          <rect x="50" y="80" width="300" height="20" fill="#667eea"/>
+          <text x="200" y="70" font-size="30" text-anchor="middle">🌍</text>
+          <rect x="78" y="116" width="100" height="10" rx="4" fill="#1a1a1a"/>
+          <rect x="78" y="133" width="160" height="7" rx="3" fill="#aaa"/>
+          <rect x="78" y="146" width="130" height="7" rx="3" fill="#aaa"/>
+          <!-- 좌우 스와이프 힌트 화살표 -->
+          <text x="24" y="118" font-size="20" fill="#ff6b6b" opacity="0.7">✕</text>
+          <text x="355" y="118" font-size="20" fill="#22c55e" opacity="0.7">♥</text>
+          <!-- 하단 점 인디케이터 -->
+          <circle cx="184" cy="212" r="4" fill="#667eea"/>
+          <circle cx="198" cy="212" r="3" fill="#ccc"/>
+          <circle cx="210" cy="212" r="3" fill="#ccc"/>
+          <circle cx="222" cy="212" r="3" fill="#ccc"/>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#D4537E"></span><span class="kw-name">스와이프 카드</span></div>
+        <div class="kw-en">Swipe Card</div>
+        <div class="kw-desc">카드를 좌우로 밀어서 선택·거절하는 인터랙션.</div>
+        <ul class="kw-points">
+          <li>틴더·데이팅앱이 대표적인 예</li>
+          <li>퀴즈·플래시카드 앱에도 활용 가능</li>
+          <li>스택처럼 쌓인 카드 여러 장 구조</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"스와이프 카드 UI, 좌우로 밀어 선택, 스택 카드 효과"</code>
+        </div>
+      </div>
+    </div>
+
     <!-- 진행바 -->
     <div class="kw-card">
       <div class="preview-area">
@@ -1140,6 +1493,44 @@ body {
   </div>
   <div class="cards-grid">
 
+    <!-- 아티스틱 앞에 미니멀리스트 추가 -->
+    <!-- 미니멀리스트 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#ffffff"/>
+          <!-- 매우 간단한 상단 -->
+          <line x1="0" y1="44" x2="400" y2="44" stroke="#f0f0f0" stroke-width="1"/>
+          <rect x="24" y="16" width="32" height="12" rx="2" fill="#1a1a1a"/>
+          <circle cx="376" cy="22" r="8" fill="#f5f5f5"/>
+          <!-- 넓은 여백과 단 하나의 메시지 -->
+          <text x="200" y="96" font-size="11" fill="#999" text-anchor="middle" font-family="sans-serif" letter-spacing="4">LESS IS MORE</text>
+          <rect x="160" y="104" width="80" height="1" fill="#e0e0e0"/>
+          <text x="200" y="128" font-size="22" font-weight="bold" fill="#111" text-anchor="middle" font-family="serif">단 하나의</text>
+          <text x="200" y="152" font-size="22" font-weight="bold" fill="#111" text-anchor="middle" font-family="serif">메시지만.</text>
+          <!-- 아주 단순한 버튼 -->
+          <rect x="154" y="166" width="92" height="32" rx="0" fill="#111"/>
+          <text x="200" y="187" font-size="11" fill="#fff" text-anchor="middle" font-family="sans-serif" letter-spacing="1">시작하기</text>
+          <!-- 하단 점 딱 하나 -->
+          <circle cx="200" cy="214" r="3" fill="#ddd"/>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#BA7517"></span><span class="kw-name">미니멀리스트</span></div>
+        <div class="kw-en">Minimalist</div>
+        <div class="kw-desc">화면에 딱 하나의 핵심만 남기는 극도로 단순한 디자인.</div>
+        <ul class="kw-points">
+          <li>"모던/미니멀"보다 더 극단적으로 비움</li>
+          <li>버튼도 1개, 텍스트도 1줄</li>
+          <li>명상·집중 앱, 타이머 앱에 어울림</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"극도로 미니멀, 단 하나의 액션만 화면에, 흰 배경 여백 가득"</code>
+        </div>
+      </div>
+    </div>
+
     <!-- 게임 느낌 -->
     <div class="kw-card">
       <div class="preview-area">
@@ -1292,6 +1683,185 @@ body {
         <div class="prompt-box">
           <strong>프롬프트 예시</strong>
           <code>"아티스틱, 손 그림 느낌, 불규칙한 도형과 수채화 색감"</code>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ 6. 타이포그래피 ══════════════ -->
+<section class="section" id="sec-typo">
+  <div class="section-head">
+    <div class="section-icon" style="background:#e8f4fd;">🔵</div>
+    <div>
+      <h2>타이포그래피 & 폰트</h2>
+      <p>글자 스타일로 디자인의 성격을 완성해요</p>
+    </div>
+  </div>
+  <div class="cards-grid">
+
+    <!-- 굵은 타이틀형 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#111111"/>
+          <text x="20" y="80" font-size="56" font-weight="bold" fill="white" font-family="serif" letter-spacing="-3">BOLD</text>
+          <text x="20" y="136" font-size="56" font-weight="bold" fill="white" font-family="serif" letter-spacing="-3">TYPE.</text>
+          <line x1="20" y1="148" x2="380" y2="148" stroke="#444" stroke-width="1"/>
+          <text x="20" y="168" font-size="11" fill="#888" font-family="sans-serif" letter-spacing="3">TYPOGRAPHY MATTERS</text>
+          <rect x="20" y="180" width="100" height="32" rx="0" fill="white"/>
+          <text x="44" y="201" font-size="11" fill="#111" font-family="sans-serif" font-weight="700">시작하기</text>
+          <rect x="132" y="180" width="100" height="32" rx="0" fill="transparent" stroke="#555" stroke-width="1"/>
+          <text x="148" y="201" font-size="11" fill="#888" font-family="sans-serif">더 알아보기</text>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#378ADD"></span><span class="kw-name">굵은 타이틀형</span></div>
+        <div class="kw-en">Bold Headline</div>
+        <div class="kw-desc">아주 큰 글자 하나가 화면을 꽉 채우는 임팩트 있는 스타일.</div>
+        <ul class="kw-points">
+          <li>제목을 화면의 절반 이상으로 키움</li>
+          <li>잡지·포스터 같은 강렬한 인상</li>
+          <li>소개 페이지·이벤트 랜딩 페이지에 적합</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"큰 굵은 헤드라인 폰트, 화면을 꽉 채우는 타이틀, 잡지 스타일"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 손글씨 느낌 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#fefcf7"/>
+          <!-- 노트 라인 -->
+          <line x1="0" y1="44" x2="400" y2="44" stroke="#e8e0d0" stroke-width="0.8"/>
+          <line x1="0" y1="70" x2="400" y2="70" stroke="#e8e0d0" stroke-width="0.8"/>
+          <line x1="0" y1="96" x2="400" y2="96" stroke="#e8e0d0" stroke-width="0.8"/>
+          <line x1="0" y1="122" x2="400" y2="122" stroke="#e8e0d0" stroke-width="0.8"/>
+          <line x1="0" y1="148" x2="400" y2="148" stroke="#e8e0d0" stroke-width="0.8"/>
+          <line x1="0" y1="174" x2="400" y2="174" stroke="#e8e0d0" stroke-width="0.8"/>
+          <line x1="0" y1="200" x2="400" y2="200" stroke="#e8e0d0" stroke-width="0.8"/>
+          <!-- 왼쪽 여백선 -->
+          <line x1="40" y1="0" x2="40" y2="225" stroke="#f0c8c8" stroke-width="1.2"/>
+          <!-- 손글씨처럼 불규칙한 텍스트 표현 -->
+          <text x="52" y="36" font-size="18" fill="#3a2a1a" font-family="serif" transform="rotate(-1 200 36)">나만의 다이어리 ✏️</text>
+          <text x="52" y="62" font-size="12" fill="#5c4a32" font-family="serif">오늘은 날씨가 정말 좋았어...</text>
+          <text x="52" y="88" font-size="12" fill="#5c4a32" font-family="serif">공원에서 친구들이랑 놀고</text>
+          <text x="52" y="114" font-size="12" fill="#5c4a32" font-family="serif">아이스크림도 먹었다 🍦</text>
+          <!-- 밑줄 강조 -->
+          <line x1="52" y1="117" x2="168" y2="117" stroke="#f59e0b" stroke-width="6" opacity="0.3"/>
+          <text x="52" y="140" font-size="12" fill="#5c4a32" font-family="serif">진짜 행복한 하루였음 ♡</text>
+          <!-- 스티커/메모 -->
+          <rect x="270" y="50" width="110" height="80" rx="4" fill="#fff8b0" transform="rotate(3 325 90)" style="filter:drop-shadow(2px 2px 4px rgba(0,0,0,0.1))"/>
+          <text x="282" y="80" font-size="10" fill="#7a6a30" font-family="serif" transform="rotate(3 325 90)">기억하기!</text>
+          <text x="282" y="95" font-size="18" transform="rotate(3 325 90)">⭐ 🌸</text>
+          <!-- 날짜 -->
+          <text x="52" y="168" font-size="10" fill="#aaa" font-family="serif">2026년 5월 19일</text>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#378ADD"></span><span class="kw-name">손글씨 느낌</span></div>
+        <div class="kw-en">Handwriting Style</div>
+        <div class="kw-desc">직접 쓴 것 같은 필기체·손글씨 느낌의 폰트 스타일.</div>
+        <ul class="kw-points">
+          <li>노트 줄·여백선과 함께 쓰면 찰떡</li>
+          <li>일기장·편지·메모 앱 분위기에 딱</li>
+          <li>친근하고 개인적인 감성을 표현</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"손글씨 폰트, 노트 줄 배경, 필기체 스타일 UI"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 코드 / 터미널 폰트 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#1e1e2e"/>
+          <!-- 터미널 상단 바 -->
+          <rect x="0" y="0" width="400" height="36" rx="10" fill="#313244"/>
+          <rect x="0" y="18" width="400" height="18" fill="#313244"/>
+          <circle cx="20" cy="18" r="6" fill="#ff5f57"/>
+          <circle cx="38" cy="18" r="6" fill="#febc2e"/>
+          <circle cx="56" cy="18" r="6" fill="#28c840"/>
+          <text x="170" y="22" font-size="10" fill="#888" font-family="monospace">myapp — bash</text>
+          <!-- 터미널 내용 -->
+          <text x="16" y="54" font-size="11" fill="#a6e3a1" font-family="monospace">$ npm start</text>
+          <text x="16" y="72" font-size="11" fill="#cdd6f4" font-family="monospace">✓ 서버가 시작됐어요!</text>
+          <text x="16" y="90" font-size="11" fill="#89b4fa" font-family="monospace">→ http://localhost:3000</text>
+          <text x="16" y="116" font-size="11" fill="#f38ba8" font-family="monospace">ERROR: 파일을 찾을 수 없음</text>
+          <text x="16" y="134" font-size="11" fill="#a6e3a1" font-family="monospace">$ git commit -m "첫 커밋"</text>
+          <text x="16" y="152" font-size="11" fill="#cdd6f4" font-family="monospace">master (root-commit) a1b2c3d</text>
+          <text x="16" y="170" font-size="11" fill="#cba6f7" font-family="monospace">function hello() {'{'}</text>
+          <text x="32" y="188" font-size="11" fill="#fab387" font-family="monospace">return "안녕, 세상아!";</text>
+          <text x="16" y="206" font-size="11" fill="#cba6f7" font-family="monospace">{'}'}</text>
+          <!-- 커서 깜빡임 표현 -->
+          <rect x="16" y="210" width="8" height="12" rx="1" fill="#cdd6f4" opacity="0.8"/>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#378ADD"></span><span class="kw-name">코드 / 터미널 폰트</span></div>
+        <div class="kw-en">Code / Monospace</div>
+        <div class="kw-desc">코딩 에디터·터미널처럼 고정폭 폰트를 사용하는 스타일.</div>
+        <ul class="kw-points">
+          <li>글자 너비가 모두 같은 모노스페이스 폰트</li>
+          <li>개발·해킹·SF 느낌을 자연스럽게 연출</li>
+          <li>코드 에디터, 터미널 테마 앱에 잘 어울림</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"모노스페이스 폰트, 터미널 UI, 신택스 하이라이팅 색상"</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- 타이포 중심 레이아웃 -->
+    <div class="kw-card">
+      <div class="preview-area">
+        <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#fffef8"/>
+          <!-- 큰 배경 글자 -->
+          <text x="0" y="200" font-size="160" font-weight="bold" fill="#f0ede4" font-family="serif" letter-spacing="-8">UI</text>
+          <!-- 실제 콘텐츠 -->
+          <rect x="20" y="16" width="2" height="50" fill="#ff4d4d"/>
+          <text x="32" y="38" font-size="13" font-weight="bold" fill="#111" font-family="serif">디자인이란</text>
+          <text x="32" y="56" font-size="13" font-weight="bold" fill="#111" font-family="serif">문제를 푸는 것.</text>
+          <line x1="20" y1="72" x2="200" y2="72" stroke="#e0e0e0" stroke-width="1"/>
+          <text x="20" y="90" font-size="10" fill="#888" font-family="sans-serif" letter-spacing="2">ISSUE NO.42 · 2026</text>
+          <!-- 컬럼 레이아웃 -->
+          <rect x="20" y="100" width="172" height="6" rx="3" fill="#ccc"/>
+          <rect x="20" y="112" width="150" height="5" rx="2" fill="#ddd"/>
+          <rect x="20" y="122" width="160" height="5" rx="2" fill="#ddd"/>
+          <rect x="20" y="132" width="140" height="5" rx="2" fill="#ddd"/>
+          <rect x="20" y="144" width="155" height="5" rx="2" fill="#ddd"/>
+          <rect x="20" y="154" width="130" height="5" rx="2" fill="#ddd"/>
+          <line x1="208" y1="100" x2="208" y2="175" stroke="#e0e0e0" stroke-width="1"/>
+          <rect x="220" y="100" width="160" height="6" rx="3" fill="#ccc"/>
+          <rect x="220" y="112" width="140" height="5" rx="2" fill="#ddd"/>
+          <rect x="220" y="122" width="155" height="5" rx="2" fill="#ddd"/>
+          <rect x="220" y="132" width="130" height="5" rx="2" fill="#ddd"/>
+          <rect x="220" y="144" width="150" height="5" rx="2" fill="#ddd"/>
+          <text x="20" y="196" font-size="10" fill="#aaa" font-family="sans-serif">더 읽기 →</text>
+        </svg>
+      </div>
+      <div class="kw-body">
+        <div class="kw-top"><span class="kw-dot" style="background:#378ADD"></span><span class="kw-name">에디토리얼 / 잡지형</span></div>
+        <div class="kw-en">Editorial</div>
+        <div class="kw-desc">신문·잡지처럼 텍스트 컬럼과 타이포를 핵심으로 쓰는 스타일.</div>
+        <ul class="kw-points">
+          <li>큰 배경 글자로 분위기를 표현</li>
+          <li>2~3단 컬럼으로 읽기 흐름 유도</li>
+          <li>블로그·매거진·뉴스레터 앱에 어울림</li>
+        </ul>
+        <div class="prompt-box">
+          <strong>프롬프트 예시</strong>
+          <code>"잡지 에디토리얼 레이아웃, 2단 컬럼, 큰 배경 타이포그래피"</code>
         </div>
       </div>
     </div>
